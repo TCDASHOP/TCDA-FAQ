@@ -7,18 +7,24 @@
 
   <style>
     :root{
-      --bg:#ffffff;
-      --text:#101318;
-      --muted:#6b7280;
-      --line:rgba(15,23,42,.12);
-      --line2:rgba(15,23,42,.08);
-      --soft:#f6f7f9;
+      /* ===== Dark Theme ===== */
+      --bg:#0b0d10;
+      --panel:#13161b;
+      --panel2:#171b21;
 
+      --text:#f4f6f8;
+      --muted:#a7adb7;
+
+      --line:rgba(255,255,255,.12);
+      --line2:rgba(255,255,255,.08);
+
+      /* layout */
       --pad: clamp(16px, 4vw, 28px);
       --max: 980px;
 
+      /* type */
       --h1: clamp(22px, 2.6vw, 34px);
-      --h2: 12px; /* small section label */
+      --h2: 12px;
       --body: clamp(14px, 1.6vw, 16px);
       --small: clamp(12px, 1.35vw, 13px);
     }
@@ -29,201 +35,189 @@
       margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-                   "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,
+                  "Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
       line-height:1.75;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
 
     .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: calc(var(--pad) * 1.2) var(--pad) calc(var(--pad) * 2.2);
+      max-width:var(--max);
+      margin:0 auto;
+      padding:calc(var(--pad)*1.2) var(--pad) calc(var(--pad)*2.2);
     }
 
     header{
-      padding-bottom: clamp(18px, 4vw, 28px);
-      border-bottom: 1px solid var(--line2);
-      margin-bottom: clamp(18px, 4vw, 28px);
+      padding-bottom:clamp(18px,4vw,28px);
+      border-bottom:1px solid var(--line2);
+      margin-bottom:clamp(18px,4vw,28px);
     }
 
     .brandline{
-      font-size: var(--small);
-      color: var(--muted);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin: 0 0 10px;
+      font-size:var(--small);
+      color:var(--muted);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin:0 0 10px;
     }
 
     h1{
-      font-size: var(--h1);
-      letter-spacing: .02em;
-      margin: 0 0 10px;
-      font-weight: 600;
+      font-size:var(--h1);
+      margin:0 0 10px;
+      font-weight:600;
+      letter-spacing:.02em;
     }
 
     .lead{
       margin:0;
-      color: var(--muted);
-      font-size: var(--body);
-      max-width: 70ch;
+      color:var(--muted);
+      font-size:var(--body);
+      max-width:72ch;
     }
 
-    /* Language toggle */
-    .toolbar{
-      margin-top: 14px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-    }
+    /* ===== Language Toggle ===== */
+    .toolbar{ margin-top:14px; }
+
     .pillset{
-      display:flex;
-      gap:8px;
-      padding: 6px;
-      border: 1px solid var(--line2);
-      border-radius: 999px;
-      background: #fff;
+      display:inline-flex;
+      gap:6px;
+      padding:6px;
+      border:1px solid var(--line2);
+      border-radius:999px;
+      background:var(--panel);
     }
+
     .pill{
       border:0;
       background:transparent;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: var(--small);
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:var(--small);
       cursor:pointer;
-      color: var(--muted);
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color:transparent;
     }
     .pill[aria-pressed="true"]{
-      background: var(--soft);
-      color: var(--text);
+      background:var(--panel2);
+      color:var(--text);
     }
 
-    /* Sections */
-    .section{
-      margin-top: clamp(20px, 4.2vw, 34px);
-    }
+    /* ===== Sections ===== */
+    .section{ margin-top:clamp(22px,4vw,36px); }
+
     .sectionLabel{
-      font-size: var(--h2);
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: #7a7f89;
-      margin: 0 0 12px;
+      font-size:var(--h2);
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 12px;
       display:flex;
       align-items:center;
       gap:10px;
     }
     .sectionLabel::after{
       content:"";
+      flex:1;
       height:1px;
-      background: var(--line2);
-      flex: 1 1 auto;
-      transform: translateY(1px);
+      background:var(--line2);
+      transform:translateY(1px);
     }
 
-    /* FAQ list */
-    .faq{
-      border-top: 1px solid var(--line2);
-    }
-    details{
-      border-bottom: 1px solid var(--line2);
-      background: transparent;
-    }
+    /* ===== FAQ ===== */
+    .faq{ border-top:1px solid var(--line2); }
+
+    details{ border-bottom:1px solid var(--line2); }
+
     summary{
       list-style:none;
       cursor:pointer;
-      padding: clamp(12px, 2.4vw, 16px) 0;
+      padding:clamp(12px,2.4vw,16px) 0;
       display:flex;
-      gap: 12px;
+      gap:12px;
       align-items:flex-start;
       user-select:none;
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color:transparent;
     }
     summary::-webkit-details-marker{ display:none; }
-    summary:focus-visible{
-      outline: 3px solid rgba(0,0,0,.12);
-      outline-offset: 6px;
-      border-radius: 10px;
-    }
 
     .qMark{
-      flex: 0 0 auto;
-      width: 24px;
-      height: 24px;
-      border: 1px solid var(--line2);
-      border-radius: 999px;
+      flex:0 0 auto;
+      width:24px;
+      height:24px;
+      border:1px solid var(--line);
+      border-radius:999px;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 2px;
+      font-size:11px;
+      color:var(--muted);
+      margin-top:2px;
     }
 
     .qText{
-      flex: 1 1 auto;
-      font-size: var(--body);
-      font-weight: 540;
-      line-height: 1.55;
+      flex:1 1 auto;
+      font-size:var(--body);
+      line-height:1.55;
+      font-weight:540;
     }
 
     .chev{
       flex:0 0 auto;
       width:18px;
       height:18px;
-      margin-top: 6px;
-      color: var(--muted);
-      transition: transform .18s ease;
+      margin-top:6px;
+      color:var(--muted);
+      transition:transform .18s ease;
     }
-    details[open] .chev{ transform: rotate(180deg); }
+    details[open] .chev{ transform:rotate(180deg); }
 
     .answer{
-      padding: 0 0 clamp(16px, 3vw, 22px);
-      margin-left: calc(24px + 12px);
-      font-size: var(--body);
-      color: var(--text);
+      margin-left:calc(24px + 12px);
+      padding:0 0 clamp(16px,3vw,22px);
+      font-size:var(--body);
     }
 
     .aLine{
-      padding: 12px 14px;
-      background:#fafafa;
-      border: 1px solid var(--line2);
-      border-radius: 12px;
+      background:var(--panel2);
+      border:1px solid var(--line2);
+      border-radius:12px;
+      padding:12px 14px;
+      color:var(--text);
     }
 
-    /* Answer EN block divider when BOTH */
-    .aEn{ margin-top: 10px; }
+    .aLine.en{
+      margin-top:10px;
+      color:#d6d9df;
+      font-weight:400;
+    }
 
     /* ===== Language show/hide ===== */
-    /* default: both */
-    #app[data-lang="jp"]  .en { display:none !important; }
-    #app[data-lang="en"]  .jp { display:none !important; }
+    #app[data-lang="jp"]  .en{ display:none !important; }
+    #app[data-lang="en"]  .jp{ display:none !important; }
 
-    /* In BOTH, show both; make Q two lines for readability */
+    /* JP/EN時はQを2行にして英語を少し薄く */
     #app[data-lang="both"] .qText .jp{ display:block; }
-    #app[data-lang="both"] .qText .en{ display:block; color: var(--muted); font-weight: 450; }
+    #app[data-lang="both"] .qText .en{
+      display:block;
+      color:var(--muted);
+      font-weight:450;
+      font-size:.92em;
+    }
 
-    /* In JP-only or EN-only, keep Q single line */
+    /* 日本語のみ／英語のみの時はQを通常表示 */
     #app[data-lang="jp"] .qText .jp,
     #app[data-lang="en"] .qText .en{
       display:block;
     }
 
-    /* English in answers should not look heavier than JP */
-    .aLine.en{
-      font-weight: 400;
-      color: #2f3542;
-    }
-
     .foot{
-      margin-top: clamp(22px, 4vw, 34px);
-      padding-top: 18px;
-      border-top: 1px solid var(--line2);
-      color: var(--muted);
-      font-size: var(--small);
-      line-height: 1.7;
+      margin-top:clamp(22px,4vw,34px);
+      padding-top:18px;
+      border-top:1px solid var(--line2);
+      color:var(--muted);
+      font-size:var(--small);
+      line-height:1.7;
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -268,7 +262,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> 原則として、<strong>お客様都合による返品・交換はお受けしておりません。</strong>当ショップの商品はすべてご注文後に制作されるオンデマンド生産のためです。</div>
-            <div class="aLine en aEn"><strong>A.</strong> We do <strong>not accept returns or exchanges due to customer preference</strong>. All items are made to order after purchase.</div>
+            <div class="aLine en"><strong>A.</strong> We do <strong>not accept returns or exchanges due to customer preference</strong>. All items are made to order after purchase.</div>
           </div>
         </details>
 
@@ -285,7 +279,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> 商品到着後 <strong>7日以内</strong> にお問い合わせフォームよりご連絡ください。確認後、<strong>再制作または返金</strong>にて対応いたします。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Please contact us <strong>within 7 days of delivery</strong> via the inquiry form. We will offer a <strong>replacement or refund</strong> after confirmation.</div>
+            <div class="aLine en"><strong>A.</strong> Please contact us <strong>within 7 days of delivery</strong> via the inquiry form. We will offer a <strong>replacement or refund</strong> after confirmation.</div>
           </div>
         </details>
 
@@ -302,7 +296,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> サイズ違いによる返品・交換はお受けできません。ご購入前に必ずサイズガイドをご確認ください。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Size exchanges are not accepted. Please review the size guide carefully before ordering.</div>
+            <div class="aLine en"><strong>A.</strong> Size exchanges are not accepted. Please review the size guide carefully before ordering.</div>
           </div>
         </details>
 
@@ -327,7 +321,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> トップス・アウターは <strong>身幅（平置き）×2 = 仕上がり胸囲</strong> を基準にお選びください。目安は <strong>ご自身の胸囲＋8〜12cm</strong> です。</div>
-            <div class="aLine en aEn"><strong>A.</strong> For tops and outerwear, use <strong>Body width (flat) × 2 = garment chest measurement</strong>. We recommend choosing a size with <strong>8–12 cm of ease</strong> over your body chest.</div>
+            <div class="aLine en"><strong>A.</strong> For tops and outerwear, use <strong>Body width (flat) × 2 = garment chest measurement</strong>. We recommend choosing a size with <strong>8–12 cm of ease</strong> over your body chest.</div>
           </div>
         </details>
 
@@ -344,7 +338,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> 製造工程上、<strong>±1〜2cm程度の誤差</strong>が生じる場合があります。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Measurements may vary by <strong>±1–2 cm</strong>.</div>
+            <div class="aLine en"><strong>A.</strong> Measurements may vary by <strong>±1–2 cm</strong>.</div>
           </div>
         </details>
 
@@ -369,7 +363,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> モニターや端末の設定により、実物と色味が異なって見える場合があります。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Colors may appear slightly different depending on your screen settings.</div>
+            <div class="aLine en"><strong>A.</strong> Colors may appear slightly different depending on your screen settings.</div>
           </div>
         </details>
 
@@ -386,7 +380,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> 一部の商品画像は <strong>生成モデルや合成イメージ</strong> を使用しています。デザインや雰囲気の参考としてご覧ください。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Some product images use <strong>AI-generated or composite models</strong>. They are intended for design reference only.</div>
+            <div class="aLine en"><strong>A.</strong> Some product images use <strong>AI-generated or composite models</strong>. They are intended for design reference only.</div>
           </div>
         </details>
 
@@ -415,7 +409,7 @@
               ・PayPal<br>
               ・銀行振込（振込手数料はお客様負担）
             </div>
-            <div class="aLine en aEn"><strong>A.</strong><br>
+            <div class="aLine en"><strong>A.</strong><br>
               ・Credit cards (Visa / Mastercard / American Express)<br>
               ・PayPal<br>
               ・Bank transfer (bank fees are the customer’s responsibility)
@@ -444,7 +438,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> 当ショップは <strong>送料は無料</strong> です（チェックアウト画面に送料は加算されません）。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Yes — <strong>shipping is free</strong>. No shipping fee is added at checkout.</div>
+            <div class="aLine en"><strong>A.</strong> Yes — <strong>shipping is free</strong>. No shipping fee is added at checkout.</div>
           </div>
         </details>
 
@@ -461,24 +455,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> 目安：Tシャツ <strong>2〜5営業日</strong>／ユニセックスパーカー・ZIPパーカー <strong>3〜7営業日</strong>／スリッポン <strong>5〜10営業日</strong>。制作完了後に発送され、配送日数はお届け先地域により異なります。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Estimated production time: T-shirts <strong>2–5 business days</strong> / Hoodies & Zip hoodies <strong>3–7</strong> / Slip-on shoes <strong>5–10</strong>. Shipping time varies by destination after production.</div>
-          </div>
-        </details>
-
-        <details>
-          <summary>
-            <span class="qMark">Q</span>
-            <span class="qText">
-              <span class="jp">配送業者は指定できますか？</span>
-              <span class="en">Can I choose the shipping carrier?</span>
-            </span>
-            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer">
-            <div class="aLine jp"><strong>A.</strong> 配送業者は日本郵便、PostNL、その他提携配送業者となり、指定はできません。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Carrier selection is not available. Orders are shipped via partner carriers such as Japan Post or PostNL.</div>
+            <div class="aLine en"><strong>A.</strong> Estimated production time: T-shirts <strong>2–5 business days</strong> / Hoodies & Zip hoodies <strong>3–7</strong> / Slip-on shoes <strong>5–10</strong>. Shipping time varies by destination after production.</div>
           </div>
         </details>
 
@@ -503,24 +480,7 @@
           </summary>
           <div class="answer">
             <div class="aLine jp"><strong>A.</strong> 海外配送に対応しています。お住まいの国・地域によっては <strong>関税・輸入税・通関手数料</strong> が発生する場合があります。これらは <strong>購入者様のご負担</strong> となり、配送会社または税関より請求されます。</div>
-            <div class="aLine en aEn"><strong>A.</strong> We ship internationally. Depending on your country, <strong>customs duties/import taxes/clearance fees</strong> may apply. These charges are the <strong>customer’s responsibility</strong> and are paid to the local carrier/customs.</div>
-          </div>
-        </details>
-
-        <details>
-          <summary>
-            <span class="qMark">Q</span>
-            <span class="qText">
-              <span class="jp">海外住所入力の注意点は？</span>
-              <span class="en">Any tips for entering my address?</span>
-            </span>
-            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer">
-            <div class="aLine jp"><strong>A.</strong> 海外配送の場合は <strong>英語表記で正確に入力</strong>してください。不完全な住所は配送遅延や返送の原因になります。</div>
-            <div class="aLine en aEn"><strong>A.</strong> Please enter your address <strong>accurately in English</strong>. Incomplete addresses may cause delays or returns.</div>
+            <div class="aLine en"><strong>A.</strong> We ship internationally. Depending on your country, <strong>customs duties/import taxes/clearance fees</strong> may apply. These charges are the <strong>customer’s responsibility</strong> and are paid to the local carrier/customs.</div>
           </div>
         </details>
 
@@ -535,7 +495,6 @@
       All items are made to order.<br>
       Shipping is free, but customs fees may apply for international orders.
     </p>
-
   </div>
 
   <script>
