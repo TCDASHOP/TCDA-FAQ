@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TCDA | FAQ</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b0f16;
+      --muted:#667085;
+      --line:rgba(15,23,42,.12);
+      --line2:rgba(15,23,42,.08);
+      --soft:#f6f7f9;
+
+      --pad: clamp(16px, 4vw, 28px);
+      --max: 980px;
+
+      /* typography */
+      --h1: clamp(22px, 2.6vw, 34px);
+      --h2: clamp(13px, 1.2vw, 14px); /* small caps section label */
+      --body: clamp(14px, 1.6vw, 16px);
+      --small: clamp(12px, 1.35vw, 13px);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+                   "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      line-height:1.75;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: calc(var(--pad) * 1.2) var(--pad) calc(var(--pad) * 2.2);
+    }
+
+    /* Header (TCDA-ish: airy, simple) */
+    header{
+      padding-bottom: clamp(18px, 4vw, 28px);
+      border-bottom: 1px solid var(--line2);
+      margin-bottom: clamp(18px, 4vw, 28px);
+    }
+    .brandline{
+      font-size: var(--small);
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+    h1{
+      font-size: var(--h1);
+      letter-spacing: .02em;
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      font-size: var(--body);
+      max-width: 70ch;
+    }
+
+    /* Language pills (lightweight, like your site’s JP/EN presence) */
+    .toolbar{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .pillset{
+      display:flex;
+      gap:8px;
+      padding: 6px;
+      border: 1px solid var(--line2);
+      border-radius: 999px;
+      background: #fff;
+    }
+    .pill{
+      border:0;
+      background:transparent;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: var(--small);
+      cursor:pointer;
+      color: var(--muted);
+    }
+    .pill[aria-pressed="true"]{
+      background: var(--soft);
+      color: var(--text);
+    }
+
+    /* Section label style like “INFORMATION” vibe */
+    .section{
+      margin-top: clamp(20px, 4.2vw, 34px);
+    }
+    .sectionLabel{
+      font-size: var(--h2);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .sectionLabel::after{
+      content:"";
+      height:1px;
+      background: var(--line2);
+      flex: 1 1 auto;
+      transform: translateY(1px);
+    }
+
+    /* FAQ items — minimal lines, no “cardy” look */
+    .faq{
+      border-top: 1px solid var(--line2);
+    }
+
+    details{
+      border-bottom: 1px solid var(--line2);
+      background: transparent;
+    }
+
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: clamp(14px, 2.6vw, 18px) 0;
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    summary:focus-visible{
+      outline: 3px solid rgba(0,0,0,.12);
+      outline-offset: 6px;
+      border-radius: 10px;
+    }
+
+    .qMark{
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .qText{
+      flex: 1 1 auto;
+      font-size: var(--body);
+      font-weight: 540;
+      line-height: 1.55;
+    }
+
+    .chev{
+      flex:0 0 auto;
+      width:18px;
+      height:18px;
+      margin-top: 6px;
+      color: var(--muted);
+      transition: transform .18s ease;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+
+    .answer{
+      padding: 0 0 clamp(16px, 3vw, 22px);
+      margin-left: calc(28px + 12px); /* align with q text */
+      font-size: var(--body);
+      color: var(--text);
+    }
+
+    .aLine{
+      padding: 12px 14px;
+      background: var(--soft);
+      border: 1px solid var(--line2);
+      border-radius: 14px;
+    }
+
+    .en{
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line2);
+      color:#2f3542;
+    }
+
+    /* language visibility */
+    [data-lang="jp"] .en{ display:none; }
+    [data-lang="en"] .jp{ display:none; }
+
+    /* Small footer note */
+    .foot{
+      margin-top: clamp(22px, 4vw, 34px);
+      padding-top: 18px;
+      border-top: 1px solid var(--line2);
+      color: var(--muted);
+      font-size: var(--small);
+      line-height: 1.7;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .chev{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="app" data-lang="both">
+    <header>
+      <p class="brandline">Transcend Color Digital Apparel</p>
+      <h1>FAQ / GUIDE</h1>
+      <p class="lead">
+        質問（Q）をタップすると回答（A）が開きます。<br>
+        Tap a question to reveal the answer.
+      </p>
+
+      <div class="toolbar" aria-label="Language display">
+        <div class="pillset">
+          <button class="pill" type="button" aria-pressed="true"  data-set-lang="both">JP / EN</button>
+          <button class="pill" type="button" aria-pressed="false" data-set-lang="jp">日本語</button>
+          <button class="pill" type="button" aria-pressed="false" data-set-lang="en">English</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Returns -->
+    <section class="section">
+      <p class="sectionLabel">Returns & Exchanges</p>
+      <div class="faq">
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">返品・交換はできますか？ / Can I return or exchange my item?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> 原則として、<strong>お客様都合による返品・交換はお受けしておりません。</strong>当ショップの商品はすべてご注文後に制作されるオンデマンド生産のためです。</div>
+            <div class="aLine en"><strong>A.</strong> We do <strong>not accept returns or exchanges due to customer preference</strong>. All items are made to order after purchase.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">初期不良・誤配送の場合は？ / What if my item is defective or incorrect?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> 商品到着後 <strong>7日以内</strong> にお問い合わせフォームよりご連絡ください。確認後、<strong>再制作または返金</strong>にて対応いたします。</div>
+            <div class="aLine en"><strong>A.</strong> Please contact us <strong>within 7 days of delivery</strong> via the inquiry form. We will offer a <strong>replacement or refund</strong> after confirmation.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">サイズが合わなかった場合は？ / Can I exchange for a different size?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> サイズ違いによる返品・交換はお受けできません。ご購入前に必ずサイズガイドをご確認ください。</div>
+            <div class="aLine en"><strong>A.</strong> Size exchanges are not accepted. Please review the size guide carefully before ordering.</div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Size Guide -->
+    <section class="section">
+      <p class="sectionLabel">Size Guide</p>
+      <div class="faq">
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">サイズはどのように選べばいいですか？ / How should I choose my size?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> TOPS／OUTERは <strong>身幅（平置き）×2 = 仕上がり胸囲</strong> を基準にお選びください。目安は <strong>ご自身の胸囲＋8〜12cm</strong> です。</div>
+            <div class="aLine en"><strong>A.</strong> For tops/outerwear, use <strong>Body width (flat) × 2 = garment chest</strong>. We recommend <strong>8–12 cm of ease</strong> over your body chest.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">サイズに誤差はありますか？ / Are there size variations?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> 製造工程上、<strong>±1〜2cm程度の誤差</strong>が生じる場合があります。</div>
+            <div class="aLine en"><strong>A.</strong> Measurements may vary by <strong>±1–2 cm</strong>.</div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Product Images -->
+    <section class="section">
+      <p class="sectionLabel">Product Images</p>
+      <div class="faq">
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">写真と実物の色味は同じですか？ / Will the actual color match the photos?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> モニターや端末の設定により、実物と色味が異なって見える場合があります。</div>
+            <div class="aLine en"><strong>A.</strong> Colors may appear slightly different depending on your screen settings.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">モデル着用画像について / About model images</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> 一部の商品画像は <strong>生成モデルや合成イメージ</strong> を使用しています。デザインや雰囲気の参考としてご覧ください。</div>
+            <div class="aLine en"><strong>A.</strong> Some product images use <strong>AI-generated or composite models</strong>. They are intended for design reference only.</div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Payment -->
+    <section class="section">
+      <p class="sectionLabel">Payment Methods</p>
+      <div class="faq">
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">利用できる支払い方法は？ / What payment methods are accepted?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong><br>
+              ・クレジットカード（Visa / Mastercard / American Express）<br>
+              ・PayPal<br>
+              ・銀行振込（振込手数料はお客様負担）
+            </div>
+            <div class="aLine en"><strong>A.</strong><br>
+              ・Credit cards (Visa / Mastercard / American Express)<br>
+              ・PayPal<br>
+              ・Bank transfer (bank fees are the customer’s responsibility)
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Shipping -->
+    <section class="section">
+      <p class="sectionLabel">Shipping & Fees</p>
+      <div class="faq">
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">送料はかかりますか？ / Do you offer free shipping?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> 当ショップは <strong>送料は無料</strong> です（チェックアウト画面に送料は加算されません）。</div>
+            <div class="aLine en"><strong>A.</strong> Yes — <strong>shipping is free</strong>. No shipping fee is added at checkout.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">制作・発送までどのくらいかかりますか？ / How long does production take?</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> 目安：Tシャツ 2〜5営業日／ユニセックスパーカー・ZIPパーカー 3〜7営業日／スリッポン 5〜10営業日。制作完了後に発送され、配送日数はお届け先地域により異なります。</div>
+            <div class="aLine en"><strong>A.</strong> Estimated production time: T-shirts 2–5 business days / Hoodies & Zip hoodies 3–7 / Slip-on shoes 5–10. Shipping time varies by destination after production.</div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- International -->
+    <section class="section">
+      <p class="sectionLabel">International Shipping</p>
+      <div class="faq">
+        <details>
+          <summary>
+            <span class="qMark">Q</span>
+            <span class="qText">海外配送と関税について / International shipping & customs</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="answer">
+            <div class="aLine jp"><strong>A.</strong> 海外配送に対応しています。お住まいの国・地域によっては <strong>関税・輸入税・通関手数料</strong> が発生する場合があります。これらは <strong>購入者様のご負担</strong> となり、配送会社または税関より請求されます。</div>
+            <div class="aLine en"><strong>A.</strong> We ship internationally. Depending on your country, <strong>customs duties/import taxes/clearance fees</strong> may apply. These charges are the <strong>customer’s responsibility</strong> and are paid to the local carrier/customs.</div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <p class="foot">
+      All items are made to order. / 全商品受注生産です。<br>
+      Shipping is free, but customs fees may apply for international orders. / 送料は無料ですが、海外は関税等が発生する場合があります。
+    </p>
+  </div>
+
+  <script>
+    // Language toggle (JP / EN / BOTH)
+    const app = document.getElementById('app');
+    const pills = document.querySelectorAll('[data-set-lang]');
+
+    function setLang(lang){
+      app.setAttribute('data-lang', lang);
+      pills.forEach(b=>{
+        b.setAttribute('aria-pressed', b.dataset.setLang === lang ? 'true' : 'false');
+      });
+    }
+    pills.forEach(b=> b.addEventListener('click', ()=> setLang(b.dataset.setLang)));
+  </script>
+</body>
+</html>
