@@ -48,12 +48,11 @@ header{
   border-bottom:1px solid var(--line2);
 }
 
-.logoWrap{
-  margin-bottom:14px;
-}
+.logoWrap{ margin-bottom:14px; }
 .logoWrap img{
   height:36px;
-  opacity:.9;
+  width:auto;
+  opacity:.92;
 }
 
 .brand{
@@ -77,9 +76,7 @@ h1{
 }
 
 /* ===== LANG SWITCH ===== */
-.lang{
-  margin-top:16px;
-}
+.lang{ margin-top:16px; }
 .langBox{
   display:inline-flex;
   gap:6px;
@@ -102,9 +99,7 @@ h1{
 }
 
 /* ===== SECTIONS ===== */
-.section{
-  margin-top:40px;
-}
+.section{ margin-top:40px; }
 .sectionTitle{
   display:flex;
   align-items:center;
@@ -123,12 +118,8 @@ h1{
 }
 
 /* ===== FAQ ===== */
-.faq{
-  border-top:1px solid var(--line2);
-}
-details{
-  border-bottom:1px solid var(--line2);
-}
+.faq{ border-top:1px solid var(--line2); }
+details{ border-bottom:1px solid var(--line2); }
 summary{
   list-style:none;
   cursor:pointer;
@@ -148,9 +139,7 @@ summary::-webkit-details-marker{display:none}
   font-size:11px;
   color:var(--muted);
 }
-.qtext{
-  flex:1;
-}
+.qtext{ flex:1; }
 .qtext .en{
   font-size:.9em;
   color:var(--muted);
@@ -185,6 +174,7 @@ footer{
 }
 footer img{
   height:26px;
+  width:auto;
   opacity:.85;
   margin-bottom:8px;
 }
@@ -196,11 +186,12 @@ footer img{
 
 <header>
   <div class="logoWrap">
-    <img src="./assets/logo-tcda.png" alt="TCDA">
+    <img src="./LOGO.png" alt="TCDA">
   </div>
 
   <div class="brand">Transcend Color Digital Apparel</div>
   <h1>FAQ / GUIDE</h1>
+
   <p class="lead jp">質問（Q）をタップすると回答（A）が表示されます。</p>
   <p class="lead en">Tap a question to reveal the answer.</p>
 
@@ -213,12 +204,12 @@ footer img{
   </div>
 </header>
 
-<!-- RETURNS -->
+<!-- RETURNS & EXCHANGES -->
 <section class="section">
   <div class="sectionTitle">Returns & Exchanges</div>
   <div class="faq">
 
-    <details open>
+    <details>
       <summary>
         <div class="q">Q</div>
         <div class="qtext">
@@ -228,12 +219,250 @@ footer img{
       </summary>
       <div class="answer">
         <div class="box jp">
-          原則として、お客様都合による返品・交換はお受けしておりません。
+          <strong>A.</strong> 原則として、お客様都合による返品・交換はお受けしておりません。
           当ショップの商品はすべて注文後に制作されるオンデマンド生産です。
         </div>
         <div class="box en">
-          We do not accept returns or exchanges due to customer preference.
+          <strong>A.</strong> We do not accept returns or exchanges due to customer preference.
           All items are made to order after purchase.
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">初期不良・誤配送の場合は？</div>
+          <div class="en">What if my item is defective or incorrect?</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> 商品到着後7日以内にお問い合わせフォームよりご連絡ください。
+          確認後、再制作または返金にて対応いたします。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> Please contact us within 7 days of delivery via the inquiry form.
+          We will offer a replacement or refund after confirmation.
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">サイズが合わなかった場合は？</div>
+          <div class="en">Can I exchange for a different size?</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> サイズ違いによる返品・交換はお受けできません。
+          ご購入前に必ずサイズガイドをご確認ください。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> Size exchanges are not accepted.
+          Please review the size guide carefully before ordering.
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- SIZE GUIDE -->
+<section class="section">
+  <div class="sectionTitle">Size Guide</div>
+  <div class="faq">
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">サイズはどのように選べばいいですか？</div>
+          <div class="en">How should I choose my size?</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> トップス・アウターは「身幅（平置き）×2 = 仕上がり胸囲」を基準にお選びください。
+          目安は「ご自身の胸囲＋8〜12cm」です。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> For tops and outerwear, use “Body width (flat) × 2 = garment chest”.
+          We recommend about 8–12 cm of ease over your body chest.
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">サイズに誤差はありますか？</div>
+          <div class="en">Are there size variations?</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> 製造工程上、±1〜2cm程度の誤差が生じる場合があります。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> Measurements may vary by ±1–2 cm.
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- PRODUCT IMAGES -->
+<section class="section">
+  <div class="sectionTitle">Product Images</div>
+  <div class="faq">
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">写真と実物の色味は同じですか？</div>
+          <div class="en">Will the actual color match the photos?</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> モニターや端末の設定により、実物と色味が異なって見える場合があります。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> Colors may appear slightly different depending on your screen settings.
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">モデル着用画像について</div>
+          <div class="en">About model images</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> 一部の商品画像は生成モデルや合成イメージを使用しています。
+          デザインや雰囲気の参考としてご覧ください。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> Some product images use AI-generated or composite models.
+          They are intended for design reference only.
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- PAYMENT METHODS -->
+<section class="section">
+  <div class="sectionTitle">Payment Methods</div>
+  <div class="faq">
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">利用できる支払い方法は？</div>
+          <div class="en">What payment methods are accepted?</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong><br>
+          ・クレジットカード（Visa / Mastercard / American Express）<br>
+          ・PayPal<br>
+          ・銀行振込（振込手数料はお客様負担）
+        </div>
+        <div class="box en">
+          <strong>A.</strong><br>
+          ・Credit cards (Visa / Mastercard / American Express)<br>
+          ・PayPal<br>
+          ・Bank transfer (bank fees are the customer’s responsibility)
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- SHIPPING & FEES -->
+<section class="section">
+  <div class="sectionTitle">Shipping & Fees</div>
+  <div class="faq">
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">送料はかかりますか？</div>
+          <div class="en">Do you offer free shipping?</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> 当ショップは送料は無料です（チェックアウト画面に送料は加算されません）。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> Yes — shipping is free. No shipping fee is added at checkout.
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">制作・発送までどのくらいかかりますか？</div>
+          <div class="en">How long does production take?</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> 目安：Tシャツ 2〜5営業日／ユニセックスパーカー・ZIPパーカー 3〜7営業日／スリッポン 5〜10営業日。
+          制作完了後に発送され、配送日数はお届け先地域により異なります。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> Estimated production time: T-shirts 2–5 business days / Hoodies & Zip hoodies 3–7 / Slip-on shoes 5–10.
+          Shipping time varies by destination after production.
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- INTERNATIONAL SHIPPING -->
+<section class="section">
+  <div class="sectionTitle">International Shipping</div>
+  <div class="faq">
+
+    <details>
+      <summary>
+        <div class="q">Q</div>
+        <div class="qtext">
+          <div class="jp">海外配送と関税について</div>
+          <div class="en">International shipping & customs</div>
+        </div>
+      </summary>
+      <div class="answer">
+        <div class="box jp">
+          <strong>A.</strong> 海外配送に対応しています。お住まいの国・地域によっては関税・輸入税・通関手数料が発生する場合があります。
+          これらは購入者様のご負担となり、配送会社または税関より請求されます。
+        </div>
+        <div class="box en">
+          <strong>A.</strong> We ship internationally. Depending on your country, customs duties/import taxes/clearance fees may apply.
+          These charges are the customer’s responsibility and are paid to the local carrier/customs.
         </div>
       </div>
     </details>
@@ -242,13 +471,9 @@ footer img{
 </section>
 
 <footer>
-  <img src="./assets/logo-tcda.png" alt="TCDA">
-  <div class="jp">
-    ※ 全商品受注生産です。送料は無料ですが、海外配送には関税が発生する場合があります。
-  </div>
-  <div class="en">
-    All items are made to order. Shipping is free, but customs fees may apply.
-  </div>
+  <img src="./LOGO.png" alt="TCDA">
+  <div class="jp">※ 全商品受注生産です。送料は無料ですが、海外配送には関税が発生する場合があります。</div>
+  <div class="en">All items are made to order. Shipping is free, but customs fees may apply.</div>
 </footer>
 
 </div>
@@ -256,13 +481,13 @@ footer img{
 <script>
 const app = document.getElementById("app");
 document.querySelectorAll("[data-lang-btn]").forEach(btn=>{
-  btn.onclick=()=>{
+  btn.addEventListener("click", ()=>{
     document.querySelectorAll("[data-lang-btn]").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-    app.setAttribute("data-lang",btn.dataset.langBtn);
-  }
+    app.setAttribute("data-lang", btn.dataset.langBtn);
+  });
 });
 </script>
 
 </body>
-</html
+</html>
