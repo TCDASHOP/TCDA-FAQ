@@ -1,224 +1,275 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ / GUIDE | TCDA</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ / GUIDE | TCDA</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --line: rgba(255,255,255,0.15);
+  --muted: rgba(255,255,255,0.6);
+}
 
-    body {
-      background: #000;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-        "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-      line-height: 1.8;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-    }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
-    header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
 
-    header img {
-      width: 64px;
-      margin-bottom: 24px;
-    }
+.logo {
+  text-align: center;
+  margin-bottom: 24px;
+}
 
-    header h1 {
-      font-size: 28px;
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
-    }
+.logo img {
+  width: 56px;
+  height: auto;
+}
 
-    header p {
-      font-size: 14px;
-      color: #aaa;
-    }
+h1 {
+  text-align: center;
+  font-size: 32px;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
 
-    section {
-      margin-top: 56px;
-    }
+.lead {
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
 
-    section h2 {
-      font-size: 14px;
-      letter-spacing: 0.15em;
-      color: #888;
-      margin-bottom: 24px;
-    }
+/* language switch */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
 
-    .faq-item {
-      border-top: 1px solid #222;
-    }
+.lang-switch button {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  padding: 8px 18px;
+  cursor: pointer;
+  font-size: 14px;
+}
 
-    .faq-item:last-child {
-      border-bottom: 1px solid #222;
-    }
+.lang-switch button.active {
+  border-color: var(--fg);
+}
 
-    .faq-question {
-      padding: 20px 0;
-      cursor: pointer;
-      position: relative;
-    }
+/* sections */
+.section {
+  margin-bottom: 48px;
+}
 
-    .faq-question::after {
-      content: "+";
-      position: absolute;
-      right: 0;
-      top: 20px;
-      color: #888;
-      font-size: 18px;
-    }
+.section-title {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
 
-    .faq-item.open .faq-question::after {
-      content: "−";
-    }
+/* faq */
+.faq-item {
+  border-top: 1px solid var(--line);
+}
 
-    .faq-answer {
-      display: none;
-      padding: 0 0 24px;
-      color: #ccc;
-      font-size: 14px;
-    }
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  cursor: pointer;
+}
 
-    .faq-item.open .faq-answer {
-      display: block;
-    }
+.faq-q span {
+  font-size: 15px;
+}
 
-    footer {
-      margin-top: 100px;
-      text-align: center;
-      font-size: 12px;
-      color: #666;
-    }
+.faq-q .icon {
+  font-size: 18px;
+  opacity: 0.7;
+}
 
-    footer a {
-      color: #aaa;
-      text-decoration: none;
-    }
+.faq-a {
+  display: none;
+  padding-bottom: 18px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
 
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+.faq-item.open .faq-a {
+  display: block;
+}
+
+.faq-item.open .icon {
+  transform: rotate(45deg);
+}
+
+/* language control */
+[data-lang] {
+  display: none;
+}
+
+[data-lang].active {
+  display: block;
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <img src="LOGO.png" alt="TCDA Logo" />
-      <h1>FAQ / GUIDE</h1>
-      <p>質問（Q）をタップすると回答（A）が表示されます。</p>
-    </header>
+<div class="container">
 
-    <!-- RETURNS & EXCHANGES -->
-    <section>
-      <h2>RETURNS & EXCHANGES</h2>
-
-      <div class="faq-item">
-        <div class="faq-question">返品・交換はできますか？</div>
-        <div class="faq-answer">
-          当店の商品はすべて受注生産のため、お客様都合による返品・交換はお受けしておりません。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">初期不良・誤配送の場合は？</div>
-        <div class="faq-answer">
-          商品到着後7日以内にご連絡ください。内容を確認のうえ、無償で交換または再製作にて対応いたします。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">サイズが合わなかった場合は？</div>
-        <div class="faq-answer">
-          サイズ違いによる交換は承っておりません。必ずサイズガイドをご確認のうえご注文ください。
-        </div>
-      </div>
-    </section>
-
-    <!-- SIZE GUIDE -->
-    <section>
-      <h2>SIZE GUIDE</h2>
-
-      <div class="faq-item">
-        <div class="faq-question">サイズはどのように選べばいいですか？</div>
-        <div class="faq-answer">
-          商品ページのサイズ表をご確認ください。身幅（平置き）×2が仕上がり胸囲の目安です。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">サイズに誤差はありますか？</div>
-        <div class="faq-answer">
-          製造工程上、±1〜2cm程度の個体差が生じる場合があります。
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUCT & PRICE -->
-    <section>
-      <h2>PRODUCT & PRICING</h2>
-
-      <div class="faq-item">
-        <div class="faq-question">販売価格はどのように決まっていますか？</div>
-        <div class="faq-answer">
-          デザイン制作費、素材、印刷、国際配送コストを含めた適正価格で設定しています。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">送料はかかりますか？</div>
-        <div class="faq-answer">
-          当ショップでは送料はすべて無料です。
-        </div>
-      </div>
-    </section>
-
-    <!-- SHIPPING & CUSTOMS -->
-    <section>
-      <h2>SHIPPING & CUSTOMS</h2>
-
-      <div class="faq-item">
-        <div class="faq-question">発送までどのくらいかかりますか？</div>
-        <div class="faq-answer">
-          製作に2〜7営業日、その後発送となります。配送日数は地域により異なります。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">関税や輸入税はかかりますか？</div>
-        <div class="faq-answer">
-          国や地域によっては関税・輸入税が発生する場合があります。その場合はお客様負担となります。
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <p>
-        <a href="https://www.tcda.shop/" target="_blank">TCDA Official Store</a><br />
-        © Transcend Color Digital Apparel
-      </p>
-    </footer>
+  <div class="logo">
+    <img src="LOGO.png" alt="TCDA logo">
   </div>
 
-  <script>
-    document.querySelectorAll(".faq-question").forEach((q) => {
-      q.addEventListener("click", () => {
-        q.parentElement.classList.toggle("open");
-      });
-    });
-  </script>
+  <h1>FAQ / GUIDE</h1>
+  <p class="lead">質問（Q）をタップすると回答（A）が表示されます。</p>
+
+  <!-- language switch -->
+  <div class="lang-switch">
+    <button id="btn-ja" class="active">日本語</button>
+    <button id="btn-en">English</button>
+  </div>
+
+  <!-- ================= 日本語 ================= -->
+  <div data-lang="ja" class="active">
+
+    <div class="section">
+      <div class="section-title">RETURNS & EXCHANGES</div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span>返品・交換はできますか？</span><span class="icon">＋</span></div>
+        <div class="faq-a">
+          当ショップの商品はすべてご注文後に制作されるオンデマンド生産のため、
+          お客様都合による返品・交換はお受けしておりません。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span>初期不良・誤配送の場合は？</span><span class="icon">＋</span></div>
+        <div class="faq-a">
+          商品に不備があった場合は、商品到着後7日以内に
+          お問い合わせフォームよりご連絡ください。確認後、対応いたします。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span>サイズが合わなかった場合は？</span><span class="icon">＋</span></div>
+        <div class="faq-a">
+          サイズ間違いによる交換はお受けしておりません。
+          必ずサイズガイドをご確認の上ご注文ください。
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">PRODUCT & PRICING</div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span>販売価格について</span><span class="icon">＋</span></div>
+        <div class="faq-a">
+          表示価格には商品代金が含まれており、送料は当ショップが負担しています。
+          関税・輸入税が発生した場合は、お住まいの国の規定に基づき
+          お客様のご負担となる場合があります。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= English ================= -->
+  <div data-lang="en">
+
+    <div class="section">
+      <div class="section-title">RETURNS & EXCHANGES</div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span>Can I return or exchange my item?</span><span class="icon">＋</span></div>
+        <div class="faq-a">
+          All items are made to order. We do not accept returns or exchanges
+          due to customer preference.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span>What if my item is defective or incorrect?</span><span class="icon">＋</span></div>
+        <div class="faq-a">
+          Please contact us within 7 days of delivery.
+          We will review the issue and provide assistance.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span>Can I exchange for a different size?</span><span class="icon">＋</span></div>
+        <div class="faq-a">
+          Size-related exchanges are not accepted.
+          Please review the size guide carefully before ordering.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">PRODUCT & PRICING</div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span>About pricing</span><span class="icon">＋</span></div>
+        <div class="faq-a">
+          Prices include the product cost. Shipping is covered by our shop.
+          Customs duties or import taxes may apply depending on your country.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+/* FAQ toggle */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('open');
+  });
+});
+
+/* language switch */
+const btnJa = document.getElementById('btn-ja');
+const btnEn = document.getElementById('btn-en');
+const blocks = document.querySelectorAll('[data-lang]');
+
+function switchLang(lang) {
+  blocks.forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  btnJa.classList.toggle('active', lang === 'ja');
+  btnEn.classList.toggle('active', lang === 'en');
+}
+
+btnJa.onclick = () => switchLang('ja');
+btnEn.onclick = () => switchLang('en');
+</script>
+
 </body>
 </html>
