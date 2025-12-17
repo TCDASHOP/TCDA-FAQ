@@ -1,493 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TCDA | FAQ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ / GUIDE | TCDA</title>
 
-<style>
-:root{
-  --bg:#0b0d10;
-  --panel:#141821;
-  --panel2:#1a1f2a;
-  --text:#f5f6f8;
-  --muted:#9aa1ad;
-  --line:rgba(255,255,255,.12);
-  --line2:rgba(255,255,255,.08);
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  --max:980px;
-  --pad:clamp(16px,4vw,28px);
+    body {
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+        "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+    }
 
-  --h1:clamp(22px,2.6vw,34px);
-  --body:clamp(14px,1.6vw,16px);
-  --small:12px;
-}
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
 
-*{box-sizing:border-box}
-html,body{height:100%}
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
-               "Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-  line-height:1.75;
-}
+    header img {
+      width: 64px;
+      margin-bottom: 24px;
+    }
 
-.wrap{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:calc(var(--pad)*1.3) var(--pad) calc(var(--pad)*2);
-}
+    header h1 {
+      font-size: 28px;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
 
-/* ===== HEADER ===== */
-header{
-  position:relative;
-  padding-bottom:28px;
-  border-bottom:1px solid var(--line2);
-}
+    header p {
+      font-size: 14px;
+      color: #aaa;
+    }
 
-.logoWrap{ margin-bottom:14px; }
-.logoWrap img{
-  height:36px;
-  width:auto;
-  opacity:.92;
-}
+    section {
+      margin-top: 56px;
+    }
 
-.brand{
-  font-size:var(--small);
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:8px;
-}
+    section h2 {
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      color: #888;
+      margin-bottom: 24px;
+    }
 
-h1{
-  font-size:var(--h1);
-  font-weight:600;
-  margin:0 0 8px;
-}
+    .faq-item {
+      border-top: 1px solid #222;
+    }
 
-.lead{
-  font-size:var(--body);
-  color:var(--muted);
-  margin:0;
-}
+    .faq-item:last-child {
+      border-bottom: 1px solid #222;
+    }
 
-/* ===== LANG SWITCH ===== */
-.lang{ margin-top:16px; }
-.langBox{
-  display:inline-flex;
-  gap:6px;
-  padding:6px;
-  border-radius:999px;
-  border:1px solid var(--line2);
-  background:var(--panel);
-}
-.langBox button{
-  border:0;
-  background:none;
-  color:var(--muted);
-  padding:8px 12px;
-  border-radius:999px;
-  cursor:pointer;
-}
-.langBox button.active{
-  background:var(--panel2);
-  color:var(--text);
-}
+    .faq-question {
+      padding: 20px 0;
+      cursor: pointer;
+      position: relative;
+    }
 
-/* ===== SECTIONS ===== */
-.section{ margin-top:40px; }
-.sectionTitle{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:12px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:14px;
-}
-.sectionTitle::after{
-  content:"";
-  flex:1;
-  height:1px;
-  background:var(--line2);
-}
+    .faq-question::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 20px;
+      color: #888;
+      font-size: 18px;
+    }
 
-/* ===== FAQ ===== */
-.faq{ border-top:1px solid var(--line2); }
-details{ border-bottom:1px solid var(--line2); }
-summary{
-  list-style:none;
-  cursor:pointer;
-  display:flex;
-  gap:12px;
-  padding:16px 0;
-}
-summary::-webkit-details-marker{display:none}
+    .faq-item.open .faq-question::after {
+      content: "−";
+    }
 
-.q{
-  width:24px;height:24px;
-  border:1px solid var(--line);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:11px;
-  color:var(--muted);
-}
-.qtext{ flex:1; }
-.qtext .en{
-  font-size:.9em;
-  color:var(--muted);
-}
+    .faq-answer {
+      display: none;
+      padding: 0 0 24px;
+      color: #ccc;
+      font-size: 14px;
+    }
 
-.answer{
-  margin-left:36px;
-  padding-bottom:18px;
-}
-.box{
-  background:var(--panel2);
-  border:1px solid var(--line2);
-  border-radius:12px;
-  padding:14px;
-}
-.box.en{
-  margin-top:10px;
-  color:#d6d9df;
-}
+    .faq-item.open .faq-answer {
+      display: block;
+    }
 
-/* ===== LANGUAGE CONTROL ===== */
-[data-lang="jp"] .en{display:none}
-[data-lang="en"] .jp{display:none}
+    footer {
+      margin-top: 100px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+    }
 
-/* ===== FOOTER ===== */
-footer{
-  margin-top:48px;
-  padding-top:20px;
-  border-top:1px solid var(--line2);
-  font-size:12px;
-  color:var(--muted);
-}
-footer img{
-  height:26px;
-  width:auto;
-  opacity:.85;
-  margin-bottom:8px;
-}
-</style>
+    footer a {
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-<div class="wrap" id="app" data-lang="both">
+  <div class="container">
+    <header>
+      <img src="LOGO.png" alt="TCDA Logo" />
+      <h1>FAQ / GUIDE</h1>
+      <p>質問（Q）をタップすると回答（A）が表示されます。</p>
+    </header>
 
-<header>
-  <div class="logoWrap">
-    <img src="./LOGO.png" alt="TCDA">
+    <!-- RETURNS & EXCHANGES -->
+    <section>
+      <h2>RETURNS & EXCHANGES</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">返品・交換はできますか？</div>
+        <div class="faq-answer">
+          当店の商品はすべて受注生産のため、お客様都合による返品・交換はお受けしておりません。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">初期不良・誤配送の場合は？</div>
+        <div class="faq-answer">
+          商品到着後7日以内にご連絡ください。内容を確認のうえ、無償で交換または再製作にて対応いたします。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">サイズが合わなかった場合は？</div>
+        <div class="faq-answer">
+          サイズ違いによる交換は承っておりません。必ずサイズガイドをご確認のうえご注文ください。
+        </div>
+      </div>
+    </section>
+
+    <!-- SIZE GUIDE -->
+    <section>
+      <h2>SIZE GUIDE</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">サイズはどのように選べばいいですか？</div>
+        <div class="faq-answer">
+          商品ページのサイズ表をご確認ください。身幅（平置き）×2が仕上がり胸囲の目安です。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">サイズに誤差はありますか？</div>
+        <div class="faq-answer">
+          製造工程上、±1〜2cm程度の個体差が生じる場合があります。
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT & PRICE -->
+    <section>
+      <h2>PRODUCT & PRICING</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">販売価格はどのように決まっていますか？</div>
+        <div class="faq-answer">
+          デザイン制作費、素材、印刷、国際配送コストを含めた適正価格で設定しています。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">送料はかかりますか？</div>
+        <div class="faq-answer">
+          当ショップでは送料はすべて無料です。
+        </div>
+      </div>
+    </section>
+
+    <!-- SHIPPING & CUSTOMS -->
+    <section>
+      <h2>SHIPPING & CUSTOMS</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">発送までどのくらいかかりますか？</div>
+        <div class="faq-answer">
+          製作に2〜7営業日、その後発送となります。配送日数は地域により異なります。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">関税や輸入税はかかりますか？</div>
+        <div class="faq-answer">
+          国や地域によっては関税・輸入税が発生する場合があります。その場合はお客様負担となります。
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        <a href="https://www.tcda.shop/" target="_blank">TCDA Official Store</a><br />
+        © Transcend Color Digital Apparel
+      </p>
+    </footer>
   </div>
 
-  <div class="brand">Transcend Color Digital Apparel</div>
-  <h1>FAQ / GUIDE</h1>
-
-  <p class="lead jp">質問（Q）をタップすると回答（A）が表示されます。</p>
-  <p class="lead en">Tap a question to reveal the answer.</p>
-
-  <div class="lang">
-    <div class="langBox">
-      <button class="active" data-lang-btn="both">JP / EN</button>
-      <button data-lang-btn="jp">日本語</button>
-      <button data-lang-btn="en">English</button>
-    </div>
-  </div>
-</header>
-
-<!-- RETURNS & EXCHANGES -->
-<section class="section">
-  <div class="sectionTitle">Returns & Exchanges</div>
-  <div class="faq">
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">返品・交換はできますか？</div>
-          <div class="en">Can I return or exchange my item?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> 原則として、お客様都合による返品・交換はお受けしておりません。
-          当ショップの商品はすべて注文後に制作されるオンデマンド生産です。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> We do not accept returns or exchanges due to customer preference.
-          All items are made to order after purchase.
-        </div>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">初期不良・誤配送の場合は？</div>
-          <div class="en">What if my item is defective or incorrect?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> 商品到着後7日以内にお問い合わせフォームよりご連絡ください。
-          確認後、再制作または返金にて対応いたします。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> Please contact us within 7 days of delivery via the inquiry form.
-          We will offer a replacement or refund after confirmation.
-        </div>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">サイズが合わなかった場合は？</div>
-          <div class="en">Can I exchange for a different size?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> サイズ違いによる返品・交換はお受けできません。
-          ご購入前に必ずサイズガイドをご確認ください。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> Size exchanges are not accepted.
-          Please review the size guide carefully before ordering.
-        </div>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-<!-- SIZE GUIDE -->
-<section class="section">
-  <div class="sectionTitle">Size Guide</div>
-  <div class="faq">
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">サイズはどのように選べばいいですか？</div>
-          <div class="en">How should I choose my size?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> トップス・アウターは「身幅（平置き）×2 = 仕上がり胸囲」を基準にお選びください。
-          目安は「ご自身の胸囲＋8〜12cm」です。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> For tops and outerwear, use “Body width (flat) × 2 = garment chest”.
-          We recommend about 8–12 cm of ease over your body chest.
-        </div>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">サイズに誤差はありますか？</div>
-          <div class="en">Are there size variations?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> 製造工程上、±1〜2cm程度の誤差が生じる場合があります。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> Measurements may vary by ±1–2 cm.
-        </div>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-<!-- PRODUCT IMAGES -->
-<section class="section">
-  <div class="sectionTitle">Product Images</div>
-  <div class="faq">
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">写真と実物の色味は同じですか？</div>
-          <div class="en">Will the actual color match the photos?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> モニターや端末の設定により、実物と色味が異なって見える場合があります。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> Colors may appear slightly different depending on your screen settings.
-        </div>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">モデル着用画像について</div>
-          <div class="en">About model images</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> 一部の商品画像は生成モデルや合成イメージを使用しています。
-          デザインや雰囲気の参考としてご覧ください。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> Some product images use AI-generated or composite models.
-          They are intended for design reference only.
-        </div>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-<!-- PAYMENT METHODS -->
-<section class="section">
-  <div class="sectionTitle">Payment Methods</div>
-  <div class="faq">
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">利用できる支払い方法は？</div>
-          <div class="en">What payment methods are accepted?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong><br>
-          ・クレジットカード（Visa / Mastercard / American Express）<br>
-          ・PayPal<br>
-          ・銀行振込（振込手数料はお客様負担）
-        </div>
-        <div class="box en">
-          <strong>A.</strong><br>
-          ・Credit cards (Visa / Mastercard / American Express)<br>
-          ・PayPal<br>
-          ・Bank transfer (bank fees are the customer’s responsibility)
-        </div>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-<!-- SHIPPING & FEES -->
-<section class="section">
-  <div class="sectionTitle">Shipping & Fees</div>
-  <div class="faq">
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">送料はかかりますか？</div>
-          <div class="en">Do you offer free shipping?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> 当ショップは送料は無料です（チェックアウト画面に送料は加算されません）。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> Yes — shipping is free. No shipping fee is added at checkout.
-        </div>
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">制作・発送までどのくらいかかりますか？</div>
-          <div class="en">How long does production take?</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> 目安：Tシャツ 2〜5営業日／ユニセックスパーカー・ZIPパーカー 3〜7営業日／スリッポン 5〜10営業日。
-          制作完了後に発送され、配送日数はお届け先地域により異なります。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> Estimated production time: T-shirts 2–5 business days / Hoodies & Zip hoodies 3–7 / Slip-on shoes 5–10.
-          Shipping time varies by destination after production.
-        </div>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-<!-- INTERNATIONAL SHIPPING -->
-<section class="section">
-  <div class="sectionTitle">International Shipping</div>
-  <div class="faq">
-
-    <details>
-      <summary>
-        <div class="q">Q</div>
-        <div class="qtext">
-          <div class="jp">海外配送と関税について</div>
-          <div class="en">International shipping & customs</div>
-        </div>
-      </summary>
-      <div class="answer">
-        <div class="box jp">
-          <strong>A.</strong> 海外配送に対応しています。お住まいの国・地域によっては関税・輸入税・通関手数料が発生する場合があります。
-          これらは購入者様のご負担となり、配送会社または税関より請求されます。
-        </div>
-        <div class="box en">
-          <strong>A.</strong> We ship internationally. Depending on your country, customs duties/import taxes/clearance fees may apply.
-          These charges are the customer’s responsibility and are paid to the local carrier/customs.
-        </div>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-<footer>
-  <img src="./LOGO.png" alt="TCDA">
-  <div class="jp">※ 全商品受注生産です。送料は無料ですが、海外配送には関税が発生する場合があります。</div>
-  <div class="en">All items are made to order. Shipping is free, but customs fees may apply.</div>
-</footer>
-
-</div>
-
-<script>
-const app = document.getElementById("app");
-document.querySelectorAll("[data-lang-btn]").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    document.querySelectorAll("[data-lang-btn]").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    app.setAttribute("data-lang", btn.dataset.langBtn);
-  });
-});
-</script>
-
+  <script>
+    document.querySelectorAll(".faq-question").forEach((q) => {
+      q.addEventListener("click", () => {
+        q.parentElement.classList.toggle("open");
+      });
+    });
+  </script>
 </body>
 </html>
