@@ -1,679 +1,277 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="dark" />
-  <title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
-  <style>
-    :root{
-      --bg:#000;
-      --fg:#fff;
-      --muted:rgba(255,255,255,.72);
-      --muted2:rgba(255,255,255,.55);
-      --line:rgba(255,255,255,.14);
-      --panel:rgba(255,255,255,.06);
-      --panel2:rgba(255,255,255,.09);
-      --focus:rgba(255,255,255,.25);
-      --radius:14px;
-      --max:920px;
-      --pad:24px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--fg);
-      font-family:var(--sans);
-      line-height:1.7;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-    a{color:var(--fg); text-decoration:none; border-bottom:1px solid var(--line)}
-    a:hover{border-bottom-color:var(--fg)}
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:40px var(--pad) 56px;
-    }
-    .top{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:16px;
-      margin-bottom:26px;
-    }
-    .logo{
-      width:44px;
-      height:44px;
-      object-fit:contain;
-      opacity:.95;
-      filter:drop-shadow(0 6px 18px rgba(0,0,0,.45));
-    }
-    .brand{
-      font-size:12px;
-      letter-spacing:.22em;
-      color:var(--muted2);
-      text-transform:uppercase;
-    }
-    h1{
-      margin:0;
-      font-size:34px;
-      letter-spacing:.06em;
-    }
-    .hint{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      text-align:center;
-    }
-    .langbar{
-      display:flex;
-      gap:10px;
-      margin-top:8px;
-      padding:10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.03);
-    }
-    .langbtn{
-      appearance:none;
-      border:1px solid var(--line);
-      background:transparent;
-      color:var(--fg);
-      padding:10px 14px;
-      border-radius:999px;
-      font-size:14px;
-      cursor:pointer;
-      transition:background .15s ease, border-color .15s ease, transform .05s ease;
-      min-width:104px;
-    }
-    .langbtn:hover{background:rgba(255,255,255,.06)}
-    .langbtn:active{transform:translateY(1px)}
-    .langbtn[aria-pressed="true"]{
-      background:rgba(255,255,255,.12);
-      border-color:rgba(255,255,255,.35);
-    }
-    .langbtn:focus-visible{
-      outline:none;
-      box-shadow:0 0 0 3px var(--focus);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
 
-    .section{
-      margin-top:30px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-    }
-    .section-title{
-      font-family:var(--mono);
-      font-size:12px;
-      letter-spacing:.22em;
-      color:var(--muted2);
-      text-transform:uppercase;
-      margin:0 0 10px;
-    }
+<style>
+:root{
+  --bg:#000;
+  --text:#fff;
+  --line:#222;
+  --soft:#111;
+}
 
-    /* Accordion */
-    .faq{
-      border-top:1px solid var(--line);
-    }
-    details{
-      border-bottom:1px solid var(--line);
-    }
-    summary{
-      list-style:none;
-      cursor:pointer;
-      padding:16px 6px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      user-select:none;
-    }
-    summary::-webkit-details-marker{display:none}
-    .q{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      font-size:16px;
-    }
-    .qicon{
-      width:22px;
-      height:22px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-size:12px;
-      color:var(--muted);
-      flex:0 0 auto;
-      margin-top:2px;
-    }
-    .plus{
-      font-size:18px;
-      color:var(--muted);
-      flex:0 0 auto;
-      line-height:1;
-      padding:2px 8px;
-      border-radius:8px;
-      border:1px solid transparent;
-    }
-    details[open] .plus{
-      transform:rotate(45deg);
-      color:var(--fg);
-    }
-    summary:focus-visible{
-      outline:none;
-      box-shadow:0 0 0 3px var(--focus);
-      border-radius:10px;
-    }
-    .answer{
-      margin:0 0 16px;
-      padding:0 6px 18px 40px;
-      color:var(--muted);
-    }
-    .answer .box{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:14px 14px;
-    }
-    .answer strong{color:var(--fg)}
-    .note{
-      color:var(--muted2);
-      font-size:13px;
-      margin-top:10px;
-    }
+*{box-sizing:border-box;}
 
-    footer{
-      margin-top:44px;
-      padding-top:22px;
-      border-top:1px solid var(--line);
-      display:flex;
-      justify-content:center;
-      gap:18px;
-      flex-wrap:wrap;
-      font-size:13px;
-      color:var(--muted);
-    }
-    footer a{
-      color:var(--muted);
-      border-bottom:1px solid var(--line);
-    }
-    footer a:hover{color:var(--fg); border-bottom-color:var(--fg)}
-  </style>
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",
+               "Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+}
+
+.container{
+  max-width:900px;
+  margin:0 auto;
+  padding:80px 20px 120px;
+}
+
+.logo{
+  text-align:center;
+  margin-bottom:40px;
+}
+.logo img{
+  width:48px;
+  opacity:.9;
+}
+
+h1{
+  text-align:center;
+  font-size:32px;
+  letter-spacing:.08em;
+  margin-bottom:12px;
+}
+.subtitle{
+  text-align:center;
+  font-size:14px;
+  opacity:.6;
+  margin-bottom:32px;
+}
+
+.lang-switch{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:50px;
+}
+.lang-switch button{
+  background:var(--soft);
+  color:var(--text);
+  border:1px solid var(--line);
+  padding:8px 18px;
+  border-radius:20px;
+  cursor:pointer;
+  opacity:.6;
+}
+.lang-switch button.active{
+  opacity:1;
+  border-color:#fff;
+}
+
+.section{
+  margin-top:50px;
+}
+.section-title{
+  font-size:12px;
+  letter-spacing:.2em;
+  opacity:.5;
+  margin-bottom:12px;
+}
+
+.faq-item{
+  border-top:1px solid var(--line);
+}
+.faq-q{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+  cursor:pointer;
+}
+.faq-q span{
+  font-size:15px;
+}
+.faq-q i{
+  font-style:normal;
+  opacity:.5;
+}
+.faq-a{
+  display:none;
+  padding:0 0 20px;
+  font-size:14px;
+  line-height:1.8;
+  opacity:.85;
+}
+
+.footer{
+  border-top:1px solid var(--line);
+  margin-top:80px;
+  padding-top:24px;
+  text-align:center;
+  font-size:13px;
+  opacity:.6;
+}
+</style>
 </head>
 
 <body>
-  <main class="wrap">
-    <header class="top">
-      <img class="logo" src="LOGO.png" alt="TCDA Logo" />
-      <div class="brand">TRANSCEND COLOR DIGITAL APPAREL</div>
-      <h1>FAQ / GUIDE</h1>
-      <p class="hint" id="hintText">質問（Q）をタップすると回答（A）が表示されます。</p>
+<div class="container">
 
-      <div class="langbar" role="group" aria-label="Language switch">
-        <button class="langbtn" id="btnJa" type="button" aria-pressed="true">日本語</button>
-        <button class="langbtn" id="btnEn" type="button" aria-pressed="false">English</button>
-      </div>
-    </header>
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="LOGO.png" alt="TCDA Logo">
+  </div>
 
-    <!-- CONTENT (JA) -->
-    <div id="contentJa">
-      <section class="section">
-        <h2 class="section-title">RETURNS &amp; EXCHANGES</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>返品・交換はできますか？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> 原則として、お客様都合による返品・交換はお受けしておりません。<br/>
-                当ショップの商品はすべてご注文後に制作されるオンデマンド生産のためです。
-              </div>
-            </div>
-          </details>
+  <!-- TITLE -->
+  <h1>FAQ / GUIDE</h1>
+  <div class="subtitle">
+    質問（Q）をタップすると回答（A）が表示されます。
+  </div>
 
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>初期不良・誤配送の場合は？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> 商品に不備（初期不良）または当店都合の誤配送があった場合は、状況確認のうえ対応いたします。<br/>
-                お届け後できるだけ早く「お問い合わせ」よりご連絡ください（写真の添付があるとスムーズです）。
-              </div>
-              <div class="note">※オンデマンド生産のため、在庫交換ではなく再制作での対応となる場合があります。</div>
-            </div>
-          </details>
+  <!-- LANGUAGE SWITCH -->
+  <div class="lang-switch">
+    <button id="btn-ja" class="active">日本語</button>
+    <button id="btn-en">English</button>
+  </div>
 
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>サイズが合わなかった場合は？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> サイズ違いなどお客様都合での交換はお受けしておりません。<br/>
-                ご購入前に必ずサイズガイドをご確認ください。
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
+  <!-- RETURNS -->
+  <div class="section">
+    <div class="section-title">RETURNS & EXCHANGES</div>
 
-      <section class="section">
-        <h2 class="section-title">SIZE GUIDE</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>サイズはどのように選べばいいですか？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> トップス・アウターは「胸囲（バスト／チェスト）」を基準にお選びください。<br/>
-                商品ページのサイズ表で、<strong>身幅（平置き）×2＝仕上がり胸囲</strong>として比較できます。<br/>
-                目安として、仕上がり胸囲がヌード胸囲より<strong>+8〜12cm</strong>程度あるサイズが標準的です。<br/>
-                ゆったり着たい場合は1サイズ上がおすすめです。
-              </div>
-              <div class="note">※仕上がり寸法は測り方により±1〜2cm程度の誤差が出る場合があります。</div>
-            </div>
-          </details>
-
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>サイズに誤差はありますか？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> はい。製造工程および採寸方法の違いにより、表記サイズから<strong>±1〜2cm</strong>程度の個体差が生じる場合があります。
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">PRODUCT IMAGES</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>モデル着用画像について</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> 一部の着用画像は、イメージを伝えるためのモデル画像（合成・生成を含む）を使用する場合があります。<br/>
-                実物のシルエット・質感・色味は、商品ページの説明およびサイズ表をあわせてご確認ください。
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">PAYMENT METHODS</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>利用できる支払い方法は？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> ショップの決済画面に表示される方法をご利用いただけます。<br/>
-                （例：クレジットカード／PayPal 等。地域・通貨・決済提供状況により異なる場合があります。）
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">SHIPPING &amp; FEES</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>送料はかかりますか？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> はい。送料は配送先・商品・注文内容により異なります。<br/>
-                ご注文手続き時に表示される送料をご確認ください。
-              </div>
-            </div>
-          </details>
-
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>配送にはどのくらい時間がかかりますか？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> 当店はオンデマンド生産のため、制作後に発送となります。<br/>
-                お届け日数は制作状況・配送先・配送会社の状況により変動します。
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">INTERNATIONAL SHIPPING</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>海外発送はしていますか？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> はい。配送可能な国・地域には発送いたします。<br/>
-                対象可否は決済画面での住所入力時にご確認いただけます。
-              </div>
-            </div>
-          </details>
-
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>関税・輸入税はかかりますか？</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> 国・地域によっては関税や輸入税、通関手数料が発生する場合があります。<br/>
-                これらは原則として<strong>受取人様負担</strong>となります（各国の規定により異なります）。
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">PRODUCT &amp; PRICING</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>販売価格について</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> 販売価格は、商品仕様・制作コスト・配送コスト・決済手数料などを踏まえて設定しています。<br/>
-                国や通貨、キャンペーンの有無により表示価格が変動する場合があります。最終価格は決済画面でご確認ください。
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="返品・交換はできますか？" data-en="Can I return or exchange my item?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="原則として、お客様都合による返品・交換はお受けしておりません。すべての商品はご注文後に制作されるオンデマンド生産です。"
+           data-en="We do not accept returns or exchanges due to customer preference. All items are made to order after purchase."></div>
     </div>
 
-    <!-- CONTENT (EN) -->
-    <div id="contentEn" style="display:none">
-      <section class="section">
-        <h2 class="section-title">RETURNS &amp; EXCHANGES</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>Can I return or exchange my item?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> We do <strong>not</strong> accept returns or exchanges due to customer preference.<br/>
-                All items are made to order after purchase.
-              </div>
-            </div>
-          </details>
-
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>What if my item is defective or incorrect?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> If your item arrives defective or incorrect, we will review the issue and assist you accordingly.<br/>
-                Please contact us as soon as possible and include photos to help us confirm the situation.
-              </div>
-              <div class="note">Because items are made-to-order, a replacement may be produced and shipped rather than exchanged from stock.</div>
-            </div>
-          </details>
-
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>Can I exchange for a different size?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> We do not offer size exchanges for customer preference. Please check the size guide before ordering.
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">SIZE GUIDE</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>How should I choose my size?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> For tops and outerwear, we recommend choosing your size based on your chest measurement.<br/>
-                In the size chart, <strong>Body width (flat) × 2 = garment chest</strong> (finished measurement).<br/>
-                As a general guide, choose a size where the garment chest is about <strong>+8–12 cm</strong> larger than your body chest.<br/>
-                For a looser fit, consider sizing up by one.
-              </div>
-              <div class="note">Finished measurements may vary by about ±1–2 cm depending on how they are measured.</div>
-            </div>
-          </details>
-
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>Are there size variations?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> Yes. Due to production and measuring methods, sizes may vary by approximately <strong>±1–2 cm</strong>.
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">PRODUCT IMAGES</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>About model images</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> Some model images may be used for visual reference and may include composited or generated visuals.<br/>
-                Please also review the product description and size chart for details on fit, texture, and color.
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">PAYMENT METHODS</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>What payment methods are accepted?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> Available payment methods will be shown at checkout.<br/>
-                (e.g., credit cards, PayPal, etc. Availability may vary by region and currency.)
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">SHIPPING &amp; FEES</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>Do you charge shipping fees?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> Yes. Shipping fees vary depending on destination, item type, and order details.<br/>
-                Please confirm the final shipping cost at checkout.
-              </div>
-            </div>
-          </details>
-
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>How long does shipping take?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> Because items are made to order, production begins after purchase and shipping follows.<br/>
-                Delivery times vary depending on production status, destination, and carrier conditions.
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">INTERNATIONAL SHIPPING</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>Do you ship internationally?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> Yes. We ship to supported countries/regions.<br/>
-                Availability can be confirmed during address entry at checkout.
-              </div>
-            </div>
-          </details>
-
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>Will I need to pay customs duties or import taxes?</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> Depending on your country/region, customs duties, import taxes, or handling fees may apply.<br/>
-                These charges are typically the responsibility of the recipient and vary by local regulations.
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">PRODUCT &amp; PRICING</h2>
-        <div class="faq">
-          <details>
-            <summary>
-              <div class="q"><span class="qicon">Q</span><span>About pricing</span></div>
-              <span class="plus">+</span>
-            </summary>
-            <div class="answer">
-              <div class="box">
-                <strong>A.</strong> Prices are set based on product specifications, production cost, shipping cost, and payment processing fees.<br/>
-                Displayed prices may vary by country, currency, or promotions. Please confirm the final price at checkout.
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="初期不良・誤配送の場合は？" data-en="What if my item is defective or incorrect?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="初期不良または当店の不備による誤配送の場合、状況確認のうえ対応いたします。商品到着後できるだけ早くお問い合わせください。"
+           data-en="If your item is defective or incorrect, we will assist after confirmation. Please contact us as soon as possible after delivery."></div>
     </div>
 
-    <footer>
-      <a href="https://www.tcda.shop/" rel="noopener">Transcend Color Digital Apparel</a>
-      <a href="https://contact.tcda.shop/" rel="noopener">Contact</a>
-      <a href="https://faq.tcda.shop/" rel="noopener">FAQ / GUIDE</a>
-    </footer>
-  </main>
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="サイズが合わなかった場合は？" data-en="Can I exchange for a different size?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="オンデマンド生産のため、サイズ違いによる交換は承っておりません。事前にサイズガイドをご確認ください。"
+           data-en="Because items are made to order, size exchanges are not available. Please review the size guide carefully before purchasing."></div>
+    </div>
+  </div>
 
-  <script>
-    (function(){
-      const btnJa = document.getElementById("btnJa");
-      const btnEn = document.getElementById("btnEn");
-      const contentJa = document.getElementById("contentJa");
-      const contentEn = document.getElementById("contentEn");
-      const hintText = document.getElementById("hintText");
+  <!-- SIZE -->
+  <div class="section">
+    <div class="section-title">SIZE GUIDE</div>
 
-      function closeAllDetails(root){
-        root.querySelectorAll("details[open]").forEach(d => d.removeAttribute("open"));
-      }
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="サイズはどのように選べばいいですか？" data-en="How should I choose my size?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="商品ページに記載のサイズ表をご確認ください。身幅×2を目安に、普段着用されているサイズと比較することをおすすめします。"
+           data-en="Please refer to the size chart on each product page. Compare the garment width (×2) with your usual clothing."></div>
+    </div>
 
-      function setLang(lang){
-        const isJa = lang === "ja";
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="サイズに誤差はありますか？" data-en="Are there size variations?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="製造工程の都合上、±1〜2cm程度の個体差が生じる場合があります。"
+           data-en="Due to manufacturing processes, slight variations of ±1–2 cm may occur."></div>
+    </div>
+  </div>
 
-        // Prevent mixing: show only one block
-        contentJa.style.display = isJa ? "" : "none";
-        contentEn.style.display = isJa ? "none" : "";
+  <!-- PAYMENT -->
+  <div class="section">
+    <div class="section-title">PAYMENT METHODS</div>
 
-        // Update buttons
-        btnJa.setAttribute("aria-pressed", isJa ? "true" : "false");
-        btnEn.setAttribute("aria-pressed", isJa ? "false" : "true");
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="支払い方法は何がありますか？" data-en="What payment methods are accepted?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="クレジットカード、PayPalなど、BASEが対応する決済方法をご利用いただけます。"
+           data-en="We accept credit cards, PayPal, and other payment methods supported by BASE."></div>
+    </div>
+  </div>
 
-        // Update <html lang>
-        document.documentElement.lang = isJa ? "ja" : "en";
+  <!-- SHIPPING -->
+  <div class="section">
+    <div class="section-title">SHIPPING & FEES</div>
 
-        // Update hint
-        hintText.textContent = isJa
-          ? "質問（Q）をタップすると回答（A）が表示されます。"
-          : "Tap a question to reveal the answer.";
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="送料はかかりますか？" data-en="Do you charge shipping fees?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="当ショップでは送料は無料です。"
+           data-en="We offer free shipping on all orders."></div>
+    </div>
 
-        // Close open accordions when switching
-        closeAllDetails(contentJa);
-        closeAllDetails(contentEn);
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="配送にはどのくらいかかりますか？" data-en="How long does shipping take?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="制作期間＋発送期間を含め、通常7〜14日程度かかります。"
+           data-en="Including production and shipping, delivery usually takes 7–14 days."></div>
+    </div>
+  </div>
 
-        // Persist
-        localStorage.setItem("tcda_faq_lang", isJa ? "ja" : "en");
-      }
+  <!-- INTERNATIONAL -->
+  <div class="section">
+    <div class="section-title">INTERNATIONAL SHIPPING</div>
 
-      // Manual switch
-      btnJa.addEventListener("click", () => setLang("ja"));
-      btnEn.addEventListener("click", () => setLang("en"));
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="海外発送は可能ですか？" data-en="Do you ship internationally?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="はい、海外発送に対応しています。"
+           data-en="Yes, we ship internationally."></div>
+    </div>
 
-      // Initial: saved > browser language
-      const saved = localStorage.getItem("tcda_faq_lang");
-      if(saved === "ja" || saved === "en"){
-        setLang(saved);
-      } else {
-        const nav = (navigator.language || "").toLowerCase();
-        // Japan -> Japanese, else English
-        setLang(nav.startsWith("ja") ? "ja" : "en");
-      }
-    })();
-  </script>
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="関税や輸入税はかかりますか？" data-en="Will I need to pay customs duties or import taxes?"></span><i>+</i></div>
+      <div class="faq-a" data-ja="国や地域によって関税・輸入税が発生する場合があります。これらはお客様のご負担となります。"
+           data-en="Customs duties or import taxes may apply depending on your country. These fees are the responsibility of the customer."></div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section">
+    <div class="section-title">PRODUCT & PRICING</div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span data-ja="販売価格について" data-en="About pricing"></span><i>+</i></div>
+      <div class="faq-a" data-ja="販売価格には制作費・印刷費・運営コストが含まれています。価格は予告なく変更される場合があります。"
+           data-en="Prices include production, printing, and operational costs. Prices may change without notice."></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Transcend Color Digital Apparel
+  </div>
+
+</div>
+
+<script>
+const btnJa=document.getElementById("btn-ja");
+const btnEn=document.getElementById("btn-en");
+const qSpans=document.querySelectorAll("[data-ja]");
+const aDivs=document.querySelectorAll(".faq-a");
+
+function setLang(lang){
+  qSpans.forEach(el=>el.textContent=el.dataset[lang]);
+  aDivs.forEach(el=>el.textContent=el.dataset[lang]);
+  btnJa.classList.toggle("active",lang==="ja");
+  btnEn.classList.toggle("active",lang==="en");
+}
+
+btnJa.onclick=()=>setLang("ja");
+btnEn.onclick=()=>setLang("en");
+
+document.querySelectorAll(".faq-q").forEach(q=>{
+  q.onclick=()=>{
+    const a=q.nextElementSibling;
+    const icon=q.querySelector("i");
+    const open=a.style.display==="block";
+    document.querySelectorAll(".faq-a").forEach(x=>x.style.display="none");
+    document.querySelectorAll(".faq-q i").forEach(i=>i.textContent="+");
+    if(!open){
+      a.style.display="block";
+      icon.textContent="×";
+    }
+  };
+});
+
+setLang("ja");
+</script>
+
 </body>
 </html>
