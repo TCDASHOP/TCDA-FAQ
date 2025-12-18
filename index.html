@@ -2,77 +2,736 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
-  <meta name="description" content="Transcend Color Digital Apparel（TCDA）のFAQ / GUIDE。支払い、配送、関税、返品、サイズ、お手入れなど。" />
+  <meta name="description" content="Transcend Color Digital Apparel (TCDA) のFAQ / GUIDE。支払い、配送、関税、返品、サイズ、お手入れ、商品画像についてまとめています。" />
   <link rel="canonical" href="https://faq.tcda.shop/" />
   <meta name="robots" content="index,follow" />
 
-  <!-- OGP (最低限) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="FAQ / GUIDE | Transcend Color Digital Apparel" />
-  <meta property="og:description" content="FAQ / GUIDE：支払い、配送、関税、返品、サイズ、お手入れ" />
-  <meta property="og:url" content="https://faq.tcda.shop/" />
+  <style>
+    :root{
+      --bg:#050505;
+      --text:#eaeaea;
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.55);
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(255,255,255,.16);
+      --pill:rgba(255,255,255,.06);
+      --pill2:rgba(255,255,255,.10);
+      --focus:rgba(255,255,255,.30);
+      --max:980px;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:radial-gradient(1200px 800px at 50% -200px, rgba(255,255,255,.06), transparent 60%), var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", Segoe UI, Roboto, Arial;
+      letter-spacing:.2px;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:40px 18px 80px}
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; margin-bottom:18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; min-width:240px;
+    }
+    .logo{
+      width:34px; height:34px; border:1px solid var(--line2);
+      border-radius:10px; display:grid; place-items:center;
+      background:rgba(255,255,255,.02);
+      opacity:.95;
+    }
+    .logo svg{width:18px; height:18px; opacity:.9}
+    .brand .name{
+      font-size:12px; color:rgba(255,255,255,.70);
+      text-transform:uppercase; letter-spacing:.18em;
+      white-space:nowrap;
+    }
 
-  <!-- CSS（ここが保存先） -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+    .lang{display:flex; gap:10px; align-items:center}
+    .lang button{
+      appearance:none; border:1px solid var(--line2);
+      background:transparent; color:var(--text);
+      padding:10px 14px; border-radius:999px;
+      font-size:13px; cursor:pointer;
+      transition:transform .05s ease, background .2s ease, border-color .2s ease;
+    }
+    .lang button[aria-pressed="true"]{
+      background:rgba(255,255,255,.08);
+      border-color:rgba(255,255,255,.22);
+    }
+    .lang button:active{transform:scale(.98)}
+    .lang button:focus-visible{outline:2px solid var(--focus); outline-offset:2px}
 
-  <!-- FAQ Schema（JSで自動生成するための“入れ物”） -->
-  <script id="faq-schema" type="application/ld+json">{}</script>
+    h1{margin:12px 0 6px; font-size:44px; letter-spacing:.06em}
+    .sub{margin:0 0 18px; color:var(--muted2); font-size:13px; line-height:1.7}
+
+    /* Search bar */
+    .searchbar{
+      display:flex; align-items:center; gap:10px;
+      border:1px solid var(--line2);
+      border-radius:999px;
+      padding:10px 12px;
+      background:rgba(255,255,255,.02);
+      margin:16px 0 22px;
+    }
+    .searchbar .glass{
+      width:18px; height:18px; opacity:.85;
+      display:grid; place-items:center;
+      color:rgba(255,255,255,.7);
+      flex:0 0 auto;
+    }
+    .searchbar input{
+      width:100%;
+      border:none; outline:none;
+      background:transparent;
+      color:var(--text);
+      font-size:14px;
+    }
+    .searchbar input::placeholder{color:rgba(255,255,255,.45)}
+    .searchbar button{
+      appearance:none;
+      border:1px solid var(--line2);
+      background:transparent;
+      color:rgba(255,255,255,.85);
+      padding:8px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:background .2s ease;
+      font-size:13px;
+      flex:0 0 auto;
+    }
+    .searchbar button:hover{background:rgba(255,255,255,.06)}
+    .searchbar button:focus-visible{outline:2px solid var(--focus); outline-offset:2px}
+
+    .hintrow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin:0 0 10px;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+    }
+    .pill{
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--pill);
+    }
+
+    .section{
+      margin-top:26px;
+      border-top:1px solid var(--line);
+      padding-top:18px;
+    }
+    .section-title{
+      font-size:12px;
+      color:rgba(255,255,255,.65);
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      margin:0 0 10px;
+    }
+
+    details{
+      border-bottom:1px solid var(--line);
+      background:transparent;
+    }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding:16px 4px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .qleft{
+      display:flex; align-items:flex-start; gap:10px; min-width:0;
+    }
+    .qbadge{
+      width:22px; height:22px; border-radius:999px;
+      border:1px solid var(--line2);
+      display:grid; place-items:center;
+      color:rgba(255,255,255,.65);
+      flex:0 0 auto;
+      font-size:12px;
+    }
+    .qtext{
+      font-size:15px;
+      line-height:1.5;
+      margin-top:1px;
+    }
+    .tags{
+      display:flex; gap:6px; flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .tag{
+      font-size:11px;
+      color:rgba(255,255,255,.65);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      padding:4px 8px;
+      border-radius:999px;
+    }
+
+    .icon{
+      width:18px; height:18px; opacity:.85;
+      flex:0 0 auto;
+      border:1px solid var(--line2);
+      border-radius:8px;
+      display:grid; place-items:center;
+      background:rgba(255,255,255,.02);
+      transition:transform .15s ease, background .2s ease;
+    }
+    details[open] .icon{transform:rotate(45deg); background:rgba(255,255,255,.06)}
+
+    .ans{
+      padding:0 4px 16px 36px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+    }
+    .ans b{color:var(--text)}
+    .note{
+      margin-top:10px;
+      font-size:12px;
+      color:rgba(255,255,255,.55);
+    }
+    .ans ul{margin:10px 0 0 18px; padding:0}
+    .ans li{margin:6px 0}
+
+    /* search filter state */
+    .hidden{display:none !important}
+    .match{
+      background:rgba(255,255,255,.08);
+      border-radius:10px;
+      padding:2px 4px;
+      margin:0 -4px;
+    }
+    .empty{
+      margin:18px 0 0;
+      border:1px solid var(--line2);
+      border-radius:var(--radius);
+      padding:14px 14px;
+      color:rgba(255,255,255,.70);
+      background:rgba(255,255,255,.03);
+      display:none;
+    }
+
+    footer{
+      margin-top:44px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      text-align:center;
+      color:rgba(255,255,255,.60);
+      font-size:12px;
+      letter-spacing:.08em;
+    }
+
+    @media (max-width:640px){
+      h1{font-size:34px}
+      .brand .name{display:none}
+      summary{padding:14px 0}
+      .ans{padding-left:32px}
+    }
+  </style>
 </head>
 
 <body>
-  <header class="top">
-    <div class="brand">
-      <img class="brand__logo" src="LOGO.png" alt="TCDA" width="32" height="32" />
-      <span class="brand__name">TRANSCEND COLOR DIGITAL APPAREL</span>
-    </div>
-
-    <div class="lang">
-      <button type="button" class="lang__btn" data-lang="ja" aria-pressed="true">日本語</button>
-      <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">English</button>
-    </div>
-  </header>
-
   <main class="wrap">
-    <h1 class="title">FAQ / GUIDE</h1>
-    <p class="lead" data-i18n="lead">
-      質問（Q）をタップすると回答（A）が表示されます。重要項目は最初から開いています。
-    </p>
+    <div class="top">
+      <div class="brand" aria-label="Transcend Color Digital Apparel">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3l7 4v6c0 5-3 8-7 8s-7-3-7-8V7l7-4z" stroke="currentColor" stroke-width="1.5" opacity=".9"/>
+            <path d="M8 11h8M12 7v10" stroke="currentColor" stroke-width="1.5" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="name">Transcend Color Digital Apparel</div>
+      </div>
+
+      <div class="lang" role="group" aria-label="Language switch">
+        <button type="button" id="btn-ja" aria-pressed="true">日本語</button>
+        <button type="button" id="btn-en" aria-pressed="false">English</button>
+      </div>
+    </div>
+
+    <h1>FAQ / GUIDE</h1>
+    <p class="sub" data-i18n="tap">質問（Q）をタップすると回答（A）が表示されます。重要項目は最初から開いています。</p>
 
     <!-- Search -->
-    <section class="search" aria-label="FAQ search">
-      <div class="search__row">
-        <input id="faq-search" class="search__input" type="search"
-          placeholder="キーワードで検索（例：関税 / 返品 / 支払い）" />
-        <button id="faq-clear" class="search__clear" type="button">クリア</button>
-      </div>
-      <div class="search__hint">
-        <span data-i18n="searchHint1">検索は表示中の言語のみ対象です。</span>
-        <span class="chip">例：customs / returns / payment</span>
-      </div>
+    <div class="searchbar" role="search" aria-label="FAQ search">
+      <div class="glass" aria-hidden="true">⌕</div>
+      <input id="faqSearch" type="search" inputmode="search" autocomplete="off" placeholder="キーワードで検索（例：関税 / 返品 / 支払い）" />
+      <button type="button" id="clearSearch">クリア</button>
+    </div>
+
+    <div class="hintrow">
+      <div class="pill" data-i18n="hint1">検索は表示中の言語のみ対象です。</div>
+      <div class="pill" data-i18n="hint2">例：customs / returns / payment</div>
+    </div>
+
+    <div class="empty" id="emptyState" data-i18n="empty">該当するFAQが見つかりませんでした。別のキーワードで試してください。</div>
+
+    <!-- ===================== RETURNS & EXCHANGES ===================== -->
+    <section class="section" aria-labelledby="sec-returns">
+      <h2 class="section-title" id="sec-returns" data-i18n="sec_returns">RETURNS & EXCHANGES</h2>
+
+      <details class="faq-item" data-qa="return_exchange" data-important="true">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_return_exchange">返品・交換はできますか？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_important">重要</span>
+                <span class="tag" data-i18n="tag_returns">返品</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_return_exchange">
+          <b>A.</b> 当ショップの商品はオンデマンド生産（受注生産）のため、<b>お客様都合による返品・交換はお受けしておりません</b>。<br>
+          ただし、商品に初期不良があった場合や当店の不備による誤配送の場合は、状況確認のうえ対応いたします。商品到着後、できるだけ早くお問い合わせください。
+          <div class="note">※ law（特定商取引法に基づく表記）と同趣旨です。</div>
+        </div>
+      </details>
+
+      <details class="faq-item" data-qa="defective_wrong">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_defective_wrong">初期不良・誤配送の場合は？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_support">サポート</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_defective_wrong">
+          <b>A.</b> 商品に不備（初期不良）がある場合、または当店都合の誤配送の場合は、状況確認のうえ対応いたします。<br>
+          お届け後できるだけ早くご連絡ください（該当箇所の写真があるとスムーズです）。
+        </div>
+      </details>
+
+      <details class="faq-item" data-qa="size_not_fit">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_size_not_fit">サイズが合わなかった場合は？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_size">サイズ</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_size_not_fit">
+          <b>A.</b> 受注生産のため、原則として<b>サイズ都合での返品・交換はお受けできません</b>。<br>
+          ご購入前にサイズ表をご確認ください。迷った場合は「いつも通り / ゆったりなら1サイズ上」も目安です。
+        </div>
+      </details>
     </section>
 
-    <!-- Categories will be rendered here by JS -->
-    <div id="faq-root" class="faq" aria-live="polite"></div>
+    <!-- ===================== PAYMENT METHODS ===================== -->
+    <section class="section" aria-labelledby="sec-pay">
+      <h2 class="section-title" id="sec-pay" data-i18n="sec_pay">PAYMENT METHODS</h2>
 
-    <section class="meta">
-      <p class="meta__updated" id="last-updated">Last updated: —</p>
+      <details class="faq-item" data-qa="payment_methods" data-important="true">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_payment_methods">利用できる支払い方法は？（代金の支払方法・時期）</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_important">重要</span>
+                <span class="tag" data-i18n="tag_payment">支払い</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_payment_methods">
+          <b>A.</b> お支払い方法は、<b>BASEが提供する決済方法</b>に準拠します。<br>
+          クレジットカード、PayPal、その他購入画面に表示される決済方法をご利用いただけます。<br>
+          お支払い時期は、ご注文確定時となります。
+          <div class="note">※ law（About Payment Billing Date）と同趣旨です。</div>
+        </div>
+      </details>
     </section>
+
+    <!-- ===================== SHIPPING & DELIVERY ===================== -->
+    <section class="section" aria-labelledby="sec-ship">
+      <h2 class="section-title" id="sec-ship" data-i18n="sec_ship">SHIPPING & DELIVERY</h2>
+
+      <details class="faq-item" data-qa="delivery_timing" data-important="true">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_delivery_timing">商品の発送・お届け時期は？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_important">重要</span>
+                <span class="tag" data-i18n="tag_shipping">配送</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_delivery_timing">
+          <b>A.</b> 当ショップの商品はすべてオンデマンド生産（受注生産）です。ご注文確定後、制作期間を経て発送されます。<br>
+          制作期間および配送日数は商品やお届け先の国・地域により異なります。詳しい目安は各商品ページをご確認ください。
+          <div class="note">※ law（Shipping Date）と同趣旨です。</div>
+        </div>
+      </details>
+
+      <details class="faq-item" data-qa="tracking">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_tracking">追跡番号（トラッキング）はありますか？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_shipping">配送</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_tracking">
+          <b>A.</b> 発送後、追跡番号が発行される場合は通知または注文情報からご確認いただけます（配送方法・国により異なる場合があります）。
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== INTERNATIONAL ===================== -->
+    <section class="section" aria-labelledby="sec-intl">
+      <h2 class="section-title" id="sec-intl" data-i18n="sec_intl">INTERNATIONAL SHIPPING</h2>
+
+      <details class="faq-item" data-qa="customs" data-important="true">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_customs">関税・輸入税はかかりますか？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_important">重要</span>
+                <span class="tag" data-i18n="tag_customs">関税</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_customs">
+          <b>A.</b> お届け先の国・地域によっては、関税・輸入税・通関手数料が発生する場合があります（原則：購入者負担）。<br>
+          税額や条件は各国の規定により異なります。
+        </div>
+      </details>
+
+      <details class="faq-item" data-qa="international">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_international">海外配送は可能ですか？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_shipping">配送</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_international">
+          <b>A.</b> はい、国・地域によって海外配送が可能です。チェックアウト画面に表示される配送可否をご確認ください。
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== PRODUCT & PRICING ===================== -->
+    <section class="section" aria-labelledby="sec-price">
+      <h2 class="section-title" id="sec-price" data-i18n="sec_price">PRODUCT & PRICING</h2>
+
+      <details class="faq-item" data-qa="pricing" data-important="true">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_pricing">販売価格について</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_important">重要</span>
+                <span class="tag" data-i18n="tag_price">価格</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_pricing">
+          <b>A.</b> 表示されている販売価格には、制作費・印刷費・素材費・運営コストが含まれています。<br>
+          受注生産のため、価格は予告なく変更される場合があります（為替・原材料価格等の影響）。
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== SIZE & CARE (FAQ-only) ===================== -->
+    <section class="section" aria-labelledby="sec-guide">
+      <h2 class="section-title" id="sec-guide" data-i18n="sec_guide">SIZE / CARE (GUIDE)</h2>
+
+      <details class="faq-item" data-qa="size_choose">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_size_choose">サイズはどのように選べばいいですか？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_size">サイズ</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_size_choose">
+          <b>A.</b> 商品ページのサイズ表を基準に、身幅・着丈・袖丈（シューズは足長/アウトソール）を比較してください。<br>
+          最短で失敗を減らす方法は「手持ちの一番好きな服を平置きで測り、近い数値を選ぶ」です。
+        </div>
+      </details>
+
+      <details class="faq-item" data-qa="care">
+        <summary>
+          <div class="qleft">
+            <div class="qbadge">Q</div>
+            <div>
+              <div class="qtext" data-i18n="q_care">お手入れ方法は？</div>
+              <div class="tags">
+                <span class="tag" data-i18n="tag_care">お手入れ</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon" aria-hidden="true">+</div>
+        </summary>
+        <div class="ans" data-i18n="a_care">
+          <b>A.</b> アパレルは裏返し・低温洗い・自然乾燥推奨。プリント面への高温アイロンや乾燥機は避けてください。<br>
+          シューズは柔らかい布やブラシで軽く汚れを落とし、陰干し推奨です。
+        </div>
+      </details>
+    </section>
+
+    <footer>© <span id="year"></span> Transcend Color Digital Apparel</footer>
   </main>
 
-  <footer class="footer">
-    <p class="footer__copy" id="footer-copy">© 2025 Transcend Color Digital Apparel</p>
-  </footer>
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <noscript>
-    <div class="noscript">
-      JavaScriptが無効のためFAQを表示できません。ブラウザ設定でJavaScriptを有効にしてください。
-    </div>
-  </noscript>
+    // Language packs (single-language display: no mixing)
+    const i18n = {
+      tap:{ja:"質問（Q）をタップすると回答（A）が表示されます。重要項目は最初から開いています。", en:"Tap a question to reveal the answer. Important items are opened by default."},
+      hint1:{ja:"検索は表示中の言語のみ対象です。", en:"Search applies only to the currently displayed language."},
+      hint2:{ja:"例：customs / returns / payment", en:"Examples: customs / returns / payment"},
+      empty:{ja:"該当するFAQが見つかりませんでした。別のキーワードで試してください。", en:"No matching FAQs found. Try another keyword."},
 
-  <!-- JS（ここが保存先） -->
-  <script src="assets/js/app.js" defer></script>
+      sec_returns:{ja:"RETURNS & EXCHANGES", en:"RETURNS & EXCHANGES"},
+      tag_important:{ja:"重要", en:"Important"},
+      tag_returns:{ja:"返品", en:"Returns"},
+      tag_support:{ja:"サポート", en:"Support"},
+      tag_size:{ja:"サイズ", en:"Size"},
+      tag_payment:{ja:"支払い", en:"Payment"},
+      tag_shipping:{ja:"配送", en:"Shipping"},
+      tag_customs:{ja:"関税", en:"Customs"},
+      tag_price:{ja:"価格", en:"Pricing"},
+      tag_care:{ja:"お手入れ", en:"Care"},
+
+      q_return_exchange:{ja:"返品・交換はできますか？", en:"Can I return or exchange my item?"},
+      a_return_exchange:{ja:`<b>A.</b> 当ショップの商品はオンデマンド生産（受注生産）のため、<b>お客様都合による返品・交換はお受けしておりません</b>。<br>
+      ただし、商品に初期不良があった場合や当店の不備による誤配送の場合は、状況確認のうえ対応いたします。商品到着後、できるだけ早くお問い合わせください。
+      <div class="note">※ law（特定商取引法に基づく表記）と同趣旨です。</div>`,
+      en:`<b>A.</b> Because items are made to order, we <b>do not accept returns or exchanges based on customer preference</b>.<br>
+      If your item is defective or incorrectly delivered due to our error, we will assist after confirming the situation. Please contact us as soon as possible after receiving the item.
+      <div class="note">Same intent as the Act on Specified Commercial Transactions page.</div>`},
+
+      q_defective_wrong:{ja:"初期不良・誤配送の場合は？", en:"What if my item is defective or incorrect?"},
+      a_defective_wrong:{ja:`<b>A.</b> 商品に不備（初期不良）がある場合、または当店都合の誤配送の場合は、状況確認のうえ対応いたします。<br>
+      お届け後できるだけ早くご連絡ください（該当箇所の写真があるとスムーズです）。`,
+      en:`<b>A.</b> If your item is defective or incorrect due to our error, we will assist after confirming the situation.<br>
+      Please contact us as soon as possible (photos help speed things up).`},
+
+      q_size_not_fit:{ja:"サイズが合わなかった場合は？", en:"Can I exchange for a different size?"},
+      a_size_not_fit:{ja:`<b>A.</b> 受注生産のため、原則として<b>サイズ都合での返品・交換はお受けできません</b>。<br>
+      ご購入前にサイズ表をご確認ください。迷った場合は「いつも通り / ゆったりなら1サイズ上」も目安です。`,
+      en:`<b>A.</b> Because items are made to order, we generally <b>cannot accept size-based exchanges or returns</b>.<br>
+      Please check the size chart before purchasing. If you prefer a relaxed fit, consider sizing up.`},
+
+      sec_pay:{ja:"PAYMENT METHODS", en:"PAYMENT METHODS"},
+      q_payment_methods:{ja:"利用できる支払い方法は？（代金の支払方法・時期）", en:"What payment methods are accepted? (Payment method & timing)"},
+      a_payment_methods:{ja:`<b>A.</b> お支払い方法は、<b>BASEが提供する決済方法</b>に準拠します。<br>
+      クレジットカード、PayPal、その他購入画面に表示される決済方法をご利用いただけます。<br>
+      お支払い時期は、ご注文確定時となります。
+      <div class="note">※ law（About Payment Billing Date）と同趣旨です。</div>`,
+      en:`<b>A.</b> Payment methods follow those provided by <b>BASE</b>.<br>
+      Options include credit cards, PayPal, and other methods shown at checkout.<br>
+      Payment is required when your order is confirmed.
+      <div class="note">Same intent as “About Payment Billing Date”.</div>`},
+
+      sec_ship:{ja:"SHIPPING & DELIVERY", en:"SHIPPING & DELIVERY"},
+      q_delivery_timing:{ja:"商品の発送・お届け時期は？", en:"When will my order be produced and delivered?"},
+      a_delivery_timing:{ja:`<b>A.</b> 当ショップの商品はすべてオンデマンド生産（受注生産）です。ご注文確定後、制作期間を経て発送されます。<br>
+      制作期間および配送日数は商品やお届け先の国・地域により異なります。詳しい目安は各商品ページをご確認ください。
+      <div class="note">※ law（Shipping Date）と同趣旨です。</div>`,
+      en:`<b>A.</b> All items are made to order. Production starts after your order is confirmed, then the item ships once completed.<br>
+      Production and shipping times vary by product and destination. Please refer to each product page for estimates.
+      <div class="note">Same intent as “Shipping Date”.</div>`},
+
+      q_tracking:{ja:"追跡番号（トラッキング）はありますか？", en:"Will I get a tracking number?"},
+      a_tracking:{ja:`<b>A.</b> 発送後、追跡番号が発行される場合は通知または注文情報からご確認いただけます（配送方法・国により異なる場合があります）。`,
+      en:`<b>A.</b> If a tracking number is issued, you can check it via notifications or order details (depends on carrier and destination).`},
+
+      sec_intl:{ja:"INTERNATIONAL SHIPPING", en:"INTERNATIONAL SHIPPING"},
+      q_customs:{ja:"関税・輸入税はかかりますか？", en:"Will I need to pay customs duties or import taxes?"},
+      a_customs:{ja:`<b>A.</b> お届け先の国・地域によっては、関税・輸入税・通関手数料が発生する場合があります（原則：購入者負担）。<br>
+      税額や条件は各国の規定により異なります。`,
+      en:`<b>A.</b> Depending on your country, customs duties, import taxes, or clearance fees may apply (generally paid by the buyer).<br>
+      Amounts and rules vary by country.`},
+
+      q_international:{ja:"海外配送は可能ですか？", en:"Do you ship internationally?"},
+      a_international:{ja:`<b>A.</b> はい、国・地域によって海外配送が可能です。チェックアウト画面に表示される配送可否をご確認ください。`,
+      en:`<b>A.</b> Yes, international shipping is available depending on the destination. Please check availability at checkout.`},
+
+      sec_price:{ja:"PRODUCT & PRICING", en:"PRODUCT & PRICING"},
+      q_pricing:{ja:"販売価格について", en:"About pricing"},
+      a_pricing:{ja:`<b>A.</b> 表示されている販売価格には、制作費・印刷費・素材費・運営コストが含まれています。<br>
+      受注生産のため、価格は予告なく変更される場合があります（為替・原材料価格等の影響）。`,
+      en:`<b>A.</b> Listed prices include production, printing, materials, and operational costs.<br>
+      As items are made to order, prices may change without notice due to exchange rates or material costs.`},
+
+      sec_guide:{ja:"SIZE / CARE (GUIDE)", en:"SIZE / CARE (GUIDE)"},
+      q_size_choose:{ja:"サイズはどのように選べばいいですか？", en:"How should I choose my size?"},
+      a_size_choose:{ja:`<b>A.</b> 商品ページのサイズ表を基準に、身幅・着丈・袖丈（シューズは足長/アウトソール）を比較してください。<br>
+      最短で失敗を減らす方法は「手持ちの一番好きな服を平置きで測り、近い数値を選ぶ」です。`,
+      en:`<b>A.</b> Use the size chart on each product page and compare body width/length/sleeve (for shoes: foot length/outsole).<br>
+      The fastest way to reduce mistakes is measuring your favorite garment laid flat and choosing the closest numbers.`},
+
+      q_care:{ja:"お手入れ方法は？", en:"How should I care for items?"},
+      a_care:{ja:`<b>A.</b> アパレルは裏返し・低温洗い・自然乾燥推奨。プリント面への高温アイロンや乾燥機は避けてください。<br>
+      シューズは柔らかい布やブラシで軽く汚れを落とし、陰干し推奨です。`,
+      en:`<b>A.</b> For apparel: wash inside out, use cold/low temperature, and air dry when possible. Avoid high-heat ironing on prints and tumble drying.<br>
+      For shoes: gently clean with a soft cloth/brush and dry in the shade.`}
+    };
+
+    function setLang(lang){
+      // buttons
+      const jaBtn = document.getElementById("btn-ja");
+      const enBtn = document.getElementById("btn-en");
+      jaBtn.setAttribute("aria-pressed", lang === "ja" ? "true" : "false");
+      enBtn.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+
+      // html lang
+      document.documentElement.lang = (lang === "ja") ? "ja" : "en";
+
+      // translate
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if (i18n[key]) el.innerHTML = i18n[key][lang];
+      });
+
+      // search placeholders & button label
+      const input = document.getElementById("faqSearch");
+      const clear = document.getElementById("clearSearch");
+      input.placeholder = (lang === "ja")
+        ? "キーワードで検索（例：関税 / 返品 / 支払い）"
+        : "Search keywords (e.g., customs / returns / payment)";
+      clear.textContent = (lang === "ja") ? "クリア" : "Clear";
+
+      // reset search (because text changed)
+      clearSearch();
+    }
+
+    document.getElementById("btn-ja").addEventListener("click",()=>setLang("ja"));
+    document.getElementById("btn-en").addEventListener("click",()=>setLang("en"));
+
+    // ===== Important FAQs open by default =====
+    function openImportant(){
+      document.querySelectorAll("details[data-important='true']").forEach(d => {
+        d.open = true;
+      });
+    }
+
+    // ===== Search =====
+    const searchInput = document.getElementById("faqSearch");
+    const emptyState = document.getElementById("emptyState");
+    const allDetails = Array.from(document.querySelectorAll("details.faq-item"));
+
+    function stripHtml(html){
+      const div = document.createElement("div");
+      div.innerHTML = html;
+      return (div.textContent || "").replace(/\s+/g," ").trim();
+    }
+
+    function clearHighlights(){
+      // remove <span class="match"> wrappers by re-rendering i18n for current language (safe & simple)
+      const lang = (document.documentElement.lang === "en") ? "en" : "ja";
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if (i18n[key]) el.innerHTML = i18n[key][lang];
+      });
+    }
+
+    function highlight(el, term){
+      if (!term) return;
+      const safe = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const re = new RegExp(safe, "ig");
+      el.innerHTML = el.innerHTML.replace(re, (m)=>`<span class="match">${m}</span>`);
+    }
+
+    function filterFaq(){
+      const q = searchInput.value.trim().toLowerCase();
+      clearHighlights();
+
+      if (!q){
+        allDetails.forEach(d => d.classList.remove("hidden"));
+        emptyState.style.display = "none";
+        openImportant();
+        return;
+      }
+
+      let shown = 0;
+      allDetails.forEach(d=>{
+        const qEl = d.querySelector(".qtext");
+        const aEl = d.querySelector(".ans");
+        const text = (qEl ? stripHtml(qEl.innerHTML) : "") + " " + (aEl ? stripHtml(aEl.innerHTML) : "");
+        const ok = text.toLowerCase().includes(q);
+
+        if (ok){
+          d.classList.remove("hidden");
+          shown++;
+          d.open = true; // search hits open
+          // highlight in visible language
+          if (qEl) highlight(qEl, q);
+          if (aEl) highlight(aEl, q);
+        }else{
+          d.classList.add("hidden");
+          d.open = false;
+        }
+      });
+
+      emptyState.style.display = (shown === 0) ? "block" : "none";
+    }
+
+    function clearSearch(){
+      searchInput.value = "";
+      filterFaq();
+    }
+
+    document.getElementById("clearSearch").addEventListener("click", clearSearch);
+    searchInput.addEventListener("input", filterFaq);
+
+    // Init
+    setLang("ja");
+    openImportant();
+    filterFaq();
+  </script>
 </body>
 </html>
