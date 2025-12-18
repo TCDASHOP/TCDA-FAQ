@@ -1,277 +1,533 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
 
-<style>
-:root{
-  --bg:#000;
-  --text:#fff;
-  --line:#222;
-  --soft:#111;
-}
+  <title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
+  <meta name="description" content="Transcend Color Digital Apparel – FAQ / GUIDE" />
 
-*{box-sizing:border-box;}
+  <!-- Canonical / OG (必要に応じてURLだけ差し替え) -->
+  <link rel="canonical" href="https://faq.tcda.shop/" />
+  <meta property="og:title" content="FAQ / GUIDE | Transcend Color Digital Apparel" />
+  <meta property="og:description" content="Tap a question to reveal the answer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://faq.tcda.shop/" />
+  <!-- OG画像を用意できたら下を差し替え -->
+  <!-- <meta property="og:image" content="https://faq.tcda.shop/og.jpg" /> -->
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",
-               "Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-}
+  <style>
+    :root{
+      --bg:#050607;
+      --panel:#0b0d0f;
+      --text:#f2f2f2;
+      --muted:rgba(242,242,242,.68);
+      --line:rgba(242,242,242,.12);
+      --line2:rgba(242,242,242,.18);
+      --accent:rgba(242,242,242,.92);
 
-.container{
-  max-width:900px;
-  margin:0 auto;
-  padding:80px 20px 120px;
-}
+      --radius:14px;
+      --container:920px;
+      --pad:24px;
+      --qpad:18px;
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
 
-.logo{
-  text-align:center;
-  margin-bottom:40px;
-}
-.logo img{
-  width:48px;
-  opacity:.9;
-}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+      background: radial-gradient(900px 420px at 50% 0%, rgba(255,255,255,.06), transparent 55%) , var(--bg);
+      color:var(--text);
+      letter-spacing:.2px;
+    }
 
-h1{
-  text-align:center;
-  font-size:32px;
-  letter-spacing:.08em;
-  margin-bottom:12px;
-}
-.subtitle{
-  text-align:center;
-  font-size:14px;
-  opacity:.6;
-  margin-bottom:32px;
-}
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ opacity:.9; }
 
-.lang-switch{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-bottom:50px;
-}
-.lang-switch button{
-  background:var(--soft);
-  color:var(--text);
-  border:1px solid var(--line);
-  padding:8px 18px;
-  border-radius:20px;
-  cursor:pointer;
-  opacity:.6;
-}
-.lang-switch button.active{
-  opacity:1;
-  border-color:#fff;
-}
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
+      padding: clamp(18px, 3vw, 42px) var(--pad) 48px;
+    }
 
-.section{
-  margin-top:50px;
-}
-.section-title{
-  font-size:12px;
-  letter-spacing:.2em;
-  opacity:.5;
-  margin-bottom:12px;
-}
+    /* Header */
+    .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+      margin-top: 6px;
+      margin-bottom: 18px;
+    }
+    .logo{
+      width:44px;
+      height:44px;
+      display:block;
+      filter: drop-shadow(0 10px 24px rgba(0,0,0,.55));
+      opacity:.95;
+    }
+    .brandline{
+      text-transform:uppercase;
+      letter-spacing:.26em;
+      font-size:12px;
+      color:rgba(242,242,242,.55);
+      text-align:center;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(30px, 4vw, 44px);
+      letter-spacing:.06em;
+      font-weight:700;
+      text-align:center;
+    }
+    .sub{
+      margin: 6px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+      line-height:1.7;
+    }
 
-.faq-item{
-  border-top:1px solid var(--line);
-}
-.faq-q{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
-  cursor:pointer;
-}
-.faq-q span{
-  font-size:15px;
-}
-.faq-q i{
-  font-style:normal;
-  opacity:.5;
-}
-.faq-a{
-  display:none;
-  padding:0 0 20px;
-  font-size:14px;
-  line-height:1.8;
-  opacity:.85;
-}
+    /* Lang toggle */
+    .langbar{
+      margin: 18px auto 26px;
+      display:flex;
+      justify-content:center;
+    }
+    .seg{
+      display:flex;
+      gap:8px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--line2);
+      border-radius:999px;
+      padding:8px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .seg button{
+      appearance:none;
+      border:0;
+      background:transparent;
+      color:rgba(242,242,242,.75);
+      padding:10px 18px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      letter-spacing:.02em;
+      transition: background .15s ease, color .15s ease, transform .08s ease;
+    }
+    .seg button:active{ transform: scale(.99); }
+    .seg button[aria-pressed="true"]{
+      background: rgba(242,242,242,.14);
+      color:var(--text);
+      outline:1px solid rgba(242,242,242,.24);
+    }
 
-.footer{
-  border-top:1px solid var(--line);
-  margin-top:80px;
-  padding-top:24px;
-  text-align:center;
-  font-size:13px;
-  opacity:.6;
-}
-</style>
+    /* Sections */
+    .section{
+      margin-top: 22px;
+      border-top:1px solid var(--line);
+      padding-top: 18px;
+    }
+    .section-title{
+      text-transform:uppercase;
+      letter-spacing:.26em;
+      font-size:12px;
+      color:rgba(242,242,242,.55);
+      margin: 0 0 10px;
+    }
+
+    /* Accordion list */
+    .faq{
+      border-top:1px solid var(--line);
+    }
+    .item{
+      border-bottom:1px solid var(--line);
+    }
+    .q{
+      width:100%;
+      text-align:left;
+      background:transparent;
+      border:0;
+      color:var(--text);
+      padding: 16px 0;
+      cursor:pointer;
+
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .q .qicon{
+      flex:0 0 auto;
+      width:22px;
+      height:22px;
+      border:1px solid var(--line2);
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      color:rgba(242,242,242,.75);
+      font-weight:800;
+      font-size:12px;
+      margin-top:2px;
+    }
+    .q .qtext{
+      flex:1 1 auto;
+      line-height:1.55;
+      font-size:15px;
+      color:rgba(242,242,242,.92);
+    }
+    .q .plus{
+      flex:0 0 auto;
+      width:26px;
+      height:26px;
+      display:grid;
+      place-items:center;
+      color:rgba(242,242,242,.75);
+      border-radius:999px;
+      margin-top:-2px;
+    }
+    .q .plus::before{
+      content:"+";
+      font-size:18px;
+      line-height:1;
+      transform: translateY(-1px);
+      transition: transform .18s ease;
+    }
+    .item[aria-expanded="true"] .q .plus::before{
+      content:"×";
+      font-size:18px;
+      transform: translateY(-1px);
+    }
+
+    .a{
+      display:none;
+      padding: 0 0 16px 34px;
+    }
+    .item[aria-expanded="true"] .a{
+      display:block;
+    }
+    .abox{
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      color:rgba(242,242,242,.78);
+      line-height:1.75;
+      font-size:14px;
+    }
+    .abox strong{ color:rgba(242,242,242,.92); }
+
+    /* Footer */
+    footer{
+      margin-top: 38px;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      text-align:center;
+      color:rgba(242,242,242,.65);
+      font-size:13px;
+      letter-spacing:.04em;
+    }
+
+    /* Small screens */
+    @media (max-width:520px){
+      .a{ padding-left: 0; }
+      .abox{ padding: 14px; }
+      .q{ padding: 14px 0; }
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
+  <main class="wrap">
+    <header class="brand">
+      <img class="logo" src="LOGO.png" alt="Transcend Color Digital Apparel logo" />
+      <div class="brandline">TRANSCEND COLOR DIGITAL APPAREL</div>
+      <h1>FAQ / GUIDE</h1>
+      <p class="sub" data-i18n="lead">
+        質問（Q）をタップすると回答（A）が表示されます。<br>
+        Tap a question to reveal the answer.
+      </p>
+    </header>
 
-  <!-- LOGO -->
-  <div class="logo">
-    <img src="LOGO.png" alt="TCDA Logo">
-  </div>
-
-  <!-- TITLE -->
-  <h1>FAQ / GUIDE</h1>
-  <div class="subtitle">
-    質問（Q）をタップすると回答（A）が表示されます。
-  </div>
-
-  <!-- LANGUAGE SWITCH -->
-  <div class="lang-switch">
-    <button id="btn-ja" class="active">日本語</button>
-    <button id="btn-en">English</button>
-  </div>
-
-  <!-- RETURNS -->
-  <div class="section">
-    <div class="section-title">RETURNS & EXCHANGES</div>
-
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="返品・交換はできますか？" data-en="Can I return or exchange my item?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="原則として、お客様都合による返品・交換はお受けしておりません。すべての商品はご注文後に制作されるオンデマンド生産です。"
-           data-en="We do not accept returns or exchanges due to customer preference. All items are made to order after purchase."></div>
+    <!-- Language Toggle -->
+    <div class="langbar" role="navigation" aria-label="Language toggle">
+      <div class="seg" role="group" aria-label="Language">
+        <button type="button" id="btn-ja" aria-pressed="true">日本語</button>
+        <button type="button" id="btn-en" aria-pressed="false">English</button>
+      </div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="初期不良・誤配送の場合は？" data-en="What if my item is defective or incorrect?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="初期不良または当店の不備による誤配送の場合、状況確認のうえ対応いたします。商品到着後できるだけ早くお問い合わせください。"
-           data-en="If your item is defective or incorrect, we will assist after confirmation. Please contact us as soon as possible after delivery."></div>
-    </div>
+    <!-- RETURNS & EXCHANGES -->
+    <section class="section" aria-label="Returns & Exchanges">
+      <h2 class="section-title">RETURNS &amp; EXCHANGES</h2>
+      <div class="faq" id="faq-returns"></div>
+    </section>
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="サイズが合わなかった場合は？" data-en="Can I exchange for a different size?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="オンデマンド生産のため、サイズ違いによる交換は承っておりません。事前にサイズガイドをご確認ください。"
-           data-en="Because items are made to order, size exchanges are not available. Please review the size guide carefully before purchasing."></div>
-    </div>
-  </div>
+    <!-- SIZE GUIDE -->
+    <section class="section" aria-label="Size Guide">
+      <h2 class="section-title">SIZE GUIDE</h2>
+      <div class="faq" id="faq-size"></div>
+    </section>
 
-  <!-- SIZE -->
-  <div class="section">
-    <div class="section-title">SIZE GUIDE</div>
+    <!-- PRODUCT IMAGES -->
+    <section class="section" aria-label="Product Images">
+      <h2 class="section-title">PRODUCT IMAGES</h2>
+      <div class="faq" id="faq-images"></div>
+    </section>
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="サイズはどのように選べばいいですか？" data-en="How should I choose my size?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="商品ページに記載のサイズ表をご確認ください。身幅×2を目安に、普段着用されているサイズと比較することをおすすめします。"
-           data-en="Please refer to the size chart on each product page. Compare the garment width (×2) with your usual clothing."></div>
-    </div>
+    <!-- PAYMENT METHODS -->
+    <section class="section" aria-label="Payment Methods">
+      <h2 class="section-title">PAYMENT METHODS</h2>
+      <div class="faq" id="faq-payment"></div>
+    </section>
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="サイズに誤差はありますか？" data-en="Are there size variations?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="製造工程の都合上、±1〜2cm程度の個体差が生じる場合があります。"
-           data-en="Due to manufacturing processes, slight variations of ±1–2 cm may occur."></div>
-    </div>
-  </div>
+    <!-- SHIPPING & FEES -->
+    <section class="section" aria-label="Shipping & Fees">
+      <h2 class="section-title">SHIPPING &amp; FEES</h2>
+      <div class="faq" id="faq-shipping"></div>
+    </section>
 
-  <!-- PAYMENT -->
-  <div class="section">
-    <div class="section-title">PAYMENT METHODS</div>
+    <!-- INTERNATIONAL SHIPPING -->
+    <section class="section" aria-label="International Shipping">
+      <h2 class="section-title">INTERNATIONAL SHIPPING</h2>
+      <div class="faq" id="faq-international"></div>
+    </section>
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="支払い方法は何がありますか？" data-en="What payment methods are accepted?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="クレジットカード、PayPalなど、BASEが対応する決済方法をご利用いただけます。"
-           data-en="We accept credit cards, PayPal, and other payment methods supported by BASE."></div>
-    </div>
-  </div>
+    <!-- PRODUCT & PRICING -->
+    <section class="section" aria-label="Product & Pricing">
+      <h2 class="section-title">PRODUCT &amp; PRICING</h2>
+      <div class="faq" id="faq-pricing"></div>
+    </section>
 
-  <!-- SHIPPING -->
-  <div class="section">
-    <div class="section-title">SHIPPING & FEES</div>
+    <footer>
+      Transcend Color Digital Apparel
+    </footer>
+  </main>
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="送料はかかりますか？" data-en="Do you charge shipping fees?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="当ショップでは送料は無料です。"
-           data-en="We offer free shipping on all orders."></div>
-    </div>
+  <script>
+    // -----------------------------
+    // Data (12 items total)
+    // -----------------------------
+    const DATA = {
+      returns: [
+        {
+          q: {
+            ja: "返品・交換はできますか？",
+            en: "Can I return or exchange my item?"
+          },
+          a: {
+            ja: "<strong>A.</strong> 原則として、お客様都合による返品・交換はお受けしておりません。<br>当ショップの商品はすべてご注文後に制作されるオンデマンド生産のためです。",
+            en: "<strong>A.</strong> We generally do not accept returns or exchanges due to customer preference.<br>All items are made to order after purchase."
+          }
+        },
+        {
+          q: {
+            ja: "初期不良・誤配送の場合は？",
+            en: "What if my item is defective or incorrect?"
+          },
+          a: {
+            ja: "<strong>A.</strong> 商品に不備（初期不良）または当店都合の誤配送があった場合は、状況確認のうえ対応いたします。<br>お届け後できるだけ早く「お問い合わせ」よりご連絡ください（写真の添付があるとスムーズです）。",
+            en: "<strong>A.</strong> If your item arrives defective or incorrect due to our error, we will assist after confirming the situation.<br>Please contact us as soon as possible via the Contact page (photos help a lot)."
+          }
+        },
+        {
+          q: {
+            ja: "サイズが合わなかった場合は？",
+            en: "Can I exchange for a different size?"
+          },
+          a: {
+            ja: "<strong>A.</strong> オンデマンド生産のため、原則としてサイズ都合の交換は承っておりません。<br>ご購入前にサイズガイドをご確認ください。",
+            en: "<strong>A.</strong> Because items are made to order, we generally cannot exchange sizes due to customer preference.<br>Please review the Size Guide before purchasing."
+          }
+        }
+      ],
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="配送にはどのくらいかかりますか？" data-en="How long does shipping take?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="制作期間＋発送期間を含め、通常7〜14日程度かかります。"
-           data-en="Including production and shipping, delivery usually takes 7–14 days."></div>
-    </div>
-  </div>
+      size: [
+        {
+          q: { ja: "サイズはどのように選べばいいですか？", en: "How should I choose my size?" },
+          a: {
+            ja: "<strong>A.</strong> 商品ページのサイズ表をご確認ください。<br>トップスは「身幅（平置き）×2＝仕上がり胸囲」を基準に、ヌード寸法＋ゆとりで選ぶのがおすすめです。",
+            en: "<strong>A.</strong> Please check the size chart on each product page.<br>For tops, you can estimate the garment chest by “body width (flat) × 2” and choose with your desired ease."
+          }
+        },
+        {
+          q: { ja: "サイズに誤差はありますか？", en: "Are there size variations?" },
+          a: {
+            ja: "<strong>A.</strong> 採寸方法や製造工程により、表記サイズから±1〜2cm程度の差が出る場合があります。",
+            en: "<strong>A.</strong> Measurements may vary by approximately ±1–2 cm depending on the measuring method and production process."
+          }
+        }
+      ],
 
-  <!-- INTERNATIONAL -->
-  <div class="section">
-    <div class="section-title">INTERNATIONAL SHIPPING</div>
+      images: [
+        {
+          q: { ja: "商品画像（モデル画像）について", en: "About model images" },
+          a: {
+            ja: "<strong>A.</strong> 商品画像は、色味・質感をできるだけ正確に伝えるよう制作しています。<br>ただし閲覧環境（画面設定・照明）により見え方が異なる場合があります。",
+            en: "<strong>A.</strong> We create images to represent color and texture as accurately as possible.<br>However, appearance may vary depending on your display and viewing conditions."
+          }
+        }
+      ],
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="海外発送は可能ですか？" data-en="Do you ship internationally?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="はい、海外発送に対応しています。"
-           data-en="Yes, we ship internationally."></div>
-    </div>
+      payment: [
+        {
+          q: { ja: "利用できる支払い方法は？", en: "What payment methods are accepted?" },
+          a: {
+            ja: "<strong>A.</strong> お支払い方法は、BASEの決済（クレジットカード等）に準拠します。<br>商品ページ／購入画面に表示される手段をご確認ください。",
+            en: "<strong>A.</strong> Payment methods follow BASE checkout options (e.g., credit card, etc.).<br>Please confirm available methods shown on the product/checkout page."
+          }
+        }
+      ],
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="関税や輸入税はかかりますか？" data-en="Will I need to pay customs duties or import taxes?"></span><i>+</i></div>
-      <div class="faq-a" data-ja="国や地域によって関税・輸入税が発生する場合があります。これらはお客様のご負担となります。"
-           data-en="Customs duties or import taxes may apply depending on your country. These fees are the responsibility of the customer."></div>
-    </div>
-  </div>
+      shipping: [
+        {
+          q: { ja: "送料はかかりますか？", en: "Do you charge shipping fees?" },
+          a: {
+            ja: "<strong>A.</strong> 送料はお届け先・商品・配送方法により異なります。<br>購入画面にて確定金額をご確認ください。",
+            en: "<strong>A.</strong> Shipping fees vary by destination, items, and shipping method.<br>Please confirm the final amount at checkout."
+          }
+        },
+        {
+          q: { ja: "配送にはどれくらい時間がかかりますか？", en: "How long does shipping take?" },
+          a: {
+            ja: "<strong>A.</strong> 受注生産のため、制作期間＋配送日数がかかります。<br>目安は商品ページの案内をご確認ください（国・時期により変動します）。",
+            en: "<strong>A.</strong> Since items are made to order, delivery time includes production + shipping.<br>Please check the product page for estimates (varies by country/season)."
+          }
+        }
+      ],
 
-  <!-- PRICING -->
-  <div class="section">
-    <div class="section-title">PRODUCT & PRICING</div>
+      international: [
+        {
+          q: { ja: "海外配送は可能ですか？", en: "Do you ship internationally?" },
+          a: {
+            ja: "<strong>A.</strong> はい。海外配送に対応しています。<br>対応国・送料は購入画面にてご確認ください。",
+            en: "<strong>A.</strong> Yes, we ship internationally.<br>Supported countries and fees are shown at checkout."
+          }
+        },
+        {
+          q: { ja: "関税や輸入税はかかりますか？", en: "Will I need to pay customs duties or import taxes?" },
+          a: {
+            ja: "<strong>A.</strong> 国・地域の規定により、関税・輸入税等が発生する場合があります。<br>これらは原則としてお客様負担となります。",
+            en: "<strong>A.</strong> Depending on your country/region, customs duties or import taxes may apply.<br>These fees are typically the customer’s responsibility."
+          }
+        }
+      ],
 
-    <div class="faq-item">
-      <div class="faq-q"><span data-ja="販売価格について" data-en="About pricing"></span><i>+</i></div>
-      <div class="faq-a" data-ja="販売価格には制作費・印刷費・運営コストが含まれています。価格は予告なく変更される場合があります。"
-           data-en="Prices include production, printing, and operational costs. Prices may change without notice."></div>
-    </div>
-  </div>
+      pricing: [
+        {
+          q: { ja: "販売価格について", en: "About pricing" },
+          a: {
+            ja: "<strong>A.</strong> 販売価格は、製造コスト・素材仕様・制作工程・為替などを踏まえて設定しています。<br>表示価格には税込表記が含まれ、通貨表示は閲覧設定により変わる場合があります。",
+            en: "<strong>A.</strong> Prices are set based on production cost, materials, process, and exchange rates.<br>Displayed prices may include tax notation depending on your view, and currency display may vary by settings."
+          }
+        }
+      ]
+    };
 
-  <!-- FOOTER -->
-  <div class="footer">
-    Transcend Color Digital Apparel
-  </div>
-
-</div>
-
-<script>
-const btnJa=document.getElementById("btn-ja");
-const btnEn=document.getElementById("btn-en");
-const qSpans=document.querySelectorAll("[data-ja]");
-const aDivs=document.querySelectorAll(".faq-a");
-
-function setLang(lang){
-  qSpans.forEach(el=>el.textContent=el.dataset[lang]);
-  aDivs.forEach(el=>el.textContent=el.dataset[lang]);
-  btnJa.classList.toggle("active",lang==="ja");
-  btnEn.classList.toggle("active",lang==="en");
-}
-
-btnJa.onclick=()=>setLang("ja");
-btnEn.onclick=()=>setLang("en");
-
-document.querySelectorAll(".faq-q").forEach(q=>{
-  q.onclick=()=>{
-    const a=q.nextElementSibling;
-    const icon=q.querySelector("i");
-    const open=a.style.display==="block";
-    document.querySelectorAll(".faq-a").forEach(x=>x.style.display="none");
-    document.querySelectorAll(".faq-q i").forEach(i=>i.textContent="+");
-    if(!open){
-      a.style.display="block";
-      icon.textContent="×";
+    // -----------------------------
+    // Render helpers
+    // -----------------------------
+    function escapeHTML(s){
+      return s.replace(/[&<>"']/g, (c)=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
     }
-  };
-});
 
-setLang("ja");
-</script>
+    function makeItem({q,a}, lang){
+      const item = document.createElement("div");
+      item.className = "item";
+      item.setAttribute("aria-expanded", "false");
 
+      const btn = document.createElement("button");
+      btn.className = "q";
+      btn.type = "button";
+
+      const icon = document.createElement("div");
+      icon.className = "qicon";
+      icon.textContent = "Q";
+
+      const text = document.createElement("div");
+      text.className = "qtext";
+      text.textContent = q[lang];
+
+      const plus = document.createElement("div");
+      plus.className = "plus";
+      plus.setAttribute("aria-hidden","true");
+
+      const answerWrap = document.createElement("div");
+      answerWrap.className = "a";
+      const box = document.createElement("div");
+      box.className = "abox";
+      box.innerHTML = a[lang];
+      answerWrap.appendChild(box);
+
+      btn.appendChild(icon);
+      btn.appendChild(text);
+      btn.appendChild(plus);
+
+      btn.addEventListener("click", ()=>{
+        const open = item.getAttribute("aria-expanded")==="true";
+        // Close others in same list for a clean feel (like tcda.shop)
+        const siblings = item.parentElement.querySelectorAll(".item[aria-expanded='true']");
+        siblings.forEach(s=>{
+          if(s!==item) s.setAttribute("aria-expanded","false");
+        });
+        item.setAttribute("aria-expanded", open ? "false" : "true");
+      });
+
+      item.appendChild(btn);
+      item.appendChild(answerWrap);
+      return item;
+    }
+
+    function renderAll(lang){
+      const map = [
+        ["faq-returns", DATA.returns],
+        ["faq-size", DATA.size],
+        ["faq-images", DATA.images],
+        ["faq-payment", DATA.payment],
+        ["faq-shipping", DATA.shipping],
+        ["faq-international", DATA.international],
+        ["faq-pricing", DATA.pricing]
+      ];
+
+      map.forEach(([id, arr])=>{
+        const root = document.getElementById(id);
+        root.innerHTML = "";
+        arr.forEach(obj => root.appendChild(makeItem(obj, lang)));
+      });
+
+      // Lead text
+      const lead = document.querySelector("[data-i18n='lead']");
+      if(lang==="ja"){
+        lead.innerHTML = "質問（Q）をタップすると回答（A）が表示されます。<br>Tap a question to reveal the answer.";
+        document.documentElement.lang = "ja";
+      }else{
+        lead.innerHTML = "Tap a question to reveal the answer.<br>質問（Q）をタップすると回答（A）が表示されます。";
+        document.documentElement.lang = "en";
+      }
+    }
+
+    // -----------------------------
+    // Language toggle
+    // -----------------------------
+    const btnJa = document.getElementById("btn-ja");
+    const btnEn = document.getElementById("btn-en");
+
+    function setLang(lang){
+      localStorage.setItem("tcda_faq_lang", lang);
+      btnJa.setAttribute("aria-pressed", lang==="ja" ? "true" : "false");
+      btnEn.setAttribute("aria-pressed", lang==="en" ? "true" : "false");
+      renderAll(lang);
+    }
+
+    btnJa.addEventListener("click", ()=>setLang("ja"));
+    btnEn.addEventListener("click", ()=>setLang("en"));
+
+    // Init
+    const saved = localStorage.getItem("tcda_faq_lang");
+    setLang(saved === "en" ? "en" : "ja");
+  </script>
 </body>
 </html>
