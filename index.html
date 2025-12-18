@@ -1,665 +1,348 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
-  <meta name="description" content="TCDA FAQ / Guide (JP/EN). Returns, sizing, payment, shipping, and more." />
-  <style>
-    :root{
-      --bg:#050607;
-      --panel:#0b0d10;
-      --line:rgba(255,255,255,.12);
-      --muted:rgba(255,255,255,.65);
-      --text:rgba(255,255,255,.92);
-      --accent:rgba(255,255,255,.88);
-      --chip:rgba(255,255,255,.10);
-      --chipActive:rgba(255,255,255,.18);
-      --radius:14px;
-      --radius2:18px;
-      --max:980px;
-      --shadow: 0 14px 40px rgba(0,0,0,.55);
-      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Hiragino Sans", "Noto Sans JP", "Apple Color Emoji","Segoe UI Emoji";
-    }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family:var(--font);
-      background: radial-gradient(1200px 700px at 50% 0%, rgba(255,255,255,.06), transparent 55%),
-                  radial-gradient(900px 500px at 10% 20%, rgba(255,255,255,.04), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      letter-spacing:.01em;
-    }
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width:var(--max); margin:0 auto; padding:56px 18px 64px; }
-    .brand{
-      display:flex; align-items:center; justify-content:center;
-      gap:10px; margin-bottom:10px;
-      color:rgba(255,255,255,.85);
-    }
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      border:1px solid var(--line);
-      display:grid; place-items:center;
-      background:rgba(255,255,255,.03);
-    }
-    .logo span{ font-size:12px; color:rgba(255,255,255,.78); letter-spacing:.12em; }
-    .brandname{
-      font-size:12px; letter-spacing:.22em; text-transform:uppercase;
-      opacity:.78;
-    }
-    h1{
-      margin:0;
-      text-align:center;
-      font-size:40px;
-      letter-spacing:.08em;
-    }
-    .sub{
-      margin:10px auto 18px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .lang{
-      display:flex; justify-content:center; margin:18px 0 28px;
-    }
-    .seg{
-      display:inline-flex;
-      padding:6px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      gap:6px;
-    }
-    .seg button{
-      appearance:none;
-      border:1px solid transparent;
-      background:transparent;
-      color:rgba(255,255,255,.82);
-      padding:10px 18px;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:14px;
-      letter-spacing:.04em;
-    }
-    .seg button[aria-pressed="true"]{
-      background:var(--chipActive);
-      border-color:rgba(255,255,255,.18);
-      color:rgba(255,255,255,.95);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    .section{
-      margin-top:26px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-    .section h2{
-      margin:0 0 14px;
-      font-size:12px;
-      letter-spacing:.24em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.55);
-    }
+<!-- ===== SEO: basic ===== -->
+<title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
+<meta name="description" content="Transcend Color Digital Apparel（TCDA）のFAQ / GUIDE。返品・交換、サイズ選び、支払い方法、配送、海外配送（関税・輸入税）、販売価格についてのご案内。" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://faq.tcda.shop/" />
 
-    .item{
-      border-top:1px solid var(--line);
-      padding:0;
-    }
-    .item:last-child{ border-bottom:1px solid var(--line); }
-    .qbtn{
-      width:100%;
-      text-align:left;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:16px 10px;
-      background:transparent;
-      border:0;
-      color:var(--text);
-      cursor:pointer;
-      font-size:15px;
-      letter-spacing:.02em;
-    }
-    .qicon{
-      width:22px; height:22px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      display:grid; place-items:center;
-      color:rgba(255,255,255,.82);
-      font-weight:600;
-      font-size:12px;
-      flex:0 0 auto;
-      background:rgba(255,255,255,.03);
-    }
-    .qtext{ flex:1 1 auto; }
-    .plus{
-      width:24px; height:24px; flex:0 0 auto;
-      display:grid; place-items:center;
-      color:rgba(255,255,255,.75);
-      border-radius:8px;
-      border:1px solid transparent;
-    }
-    .qbtn[aria-expanded="true"] .plus{
-      border-color:rgba(255,255,255,.14);
-      background:rgba(255,255,255,.05);
-    }
-    .ans{
-      display:none;
-      padding:0 10px 18px 44px;
-      color:rgba(255,255,255,.80);
-      line-height:1.75;
-      font-size:14px;
-    }
-    .ans .box{
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      border-radius:12px;
-      padding:14px 14px;
-    }
-    .ans ul{ margin:10px 0 0 18px; padding:0; }
-    .ans li{ margin:6px 0; }
-    .note{ color:rgba(255,255,255,.62); font-size:12px; margin-top:10px; }
+<!-- ===== SEO: Open Graph (SNS) ===== -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Transcend Color Digital Apparel" />
+<meta property="og:title" content="FAQ / GUIDE | Transcend Color Digital Apparel" />
+<meta property="og:description" content="返品・交換、サイズ選び、支払い方法、配送、海外配送（関税・輸入税）、販売価格についてのご案内。" />
+<meta property="og:url" content="https://faq.tcda.shop/" />
+<!-- ここはあなたのOG画像URLに差し替え -->
+<meta property="og:image" content="https://faq.tcda.shop/og.jpg" />
+<meta property="og:image:alt" content="Transcend Color Digital Apparel FAQ / GUIDE" />
 
-    footer{
-      margin-top:54px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.10);
-      text-align:center;
-      color:rgba(255,255,255,.55);
-      font-size:12px;
-      letter-spacing:.08em;
-    }
+<!-- ===== SEO: Twitter Card ===== -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="FAQ / GUIDE | Transcend Color Digital Apparel" />
+<meta name="twitter:description" content="返品・交換、サイズ選び、支払い方法、配送、海外配送（関税・輸入税）、販売価格についてのご案内。" />
+<!-- ここもOG画像と同じでOK -->
+<meta name="twitter:image" content="https://faq.tcda.shop/og.jpg" />
 
-    @media (max-width:520px){
-      h1{ font-size:32px; }
-      .qbtn{ padding:14px 6px; }
-      .ans{ padding-left:40px; }
+<!-- ===== Language hints ===== -->
+<meta name="language" content="ja" />
+<link rel="alternate" hreflang="ja" href="https://faq.tcda.shop/" />
+<link rel="alternate" hreflang="en" href="https://faq.tcda.shop/?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://faq.tcda.shop/" />
+
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;background:#000;color:#eee;letter-spacing:.04em}
+header{text-align:center;padding:80px 20px 40px}
+h1{font-size:22px;margin-bottom:12px}
+.lang-switch{margin-top:20px}
+.lang-switch button{background:none;border:1px solid #666;color:#eee;padding:6px 16px;margin:0 6px;cursor:pointer}
+.section{max-width:880px;margin:0 auto 60px;padding:0 20px}
+.section-title{margin:40px 0 16px;font-size:13px;letter-spacing:.12em;color:#888}
+.faq-item{border-top:1px solid #222}
+.faq-q{cursor:pointer;padding:16px 0;position:relative}
+.faq-q::after{content:"+";position:absolute;right:0;top:16px;color:#888}
+.faq-a{display:none;padding-bottom:16px;color:#ccc;font-size:14px;line-height:1.7}
+footer{text-align:center;padding:40px 0 24px;color:#666;font-size:12px}
+</style>
+
+<!-- =========================================================
+ FAQ Schema (JSON-LD)
+  - Googleは「単一言語のFAQPage」を前提に拾うことが多い
+  - ここでは「日本語版」をSchemaとして登録（誤解が起きにくい）
+  - 英語はUI切替で提供。必要なら英語版の別URLを作ってSchemaを分けるのが最強。
+========================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "返品・交換はできますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "当ショップの商品はすべてオンデマンド生産（受注生産）のため、お客様都合による返品・交換はお受けしておりません。ただし、初期不良や当店の不備による誤配送があった場合は、状況確認のうえ対応いたします。商品到着後、できるだけ早くご連絡ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "サイズはどのように選べばいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "商品ページに掲載しているサイズガイドをご確認ください。お手持ちの服を平置きで測り、身幅・着丈・袖丈を比較する方法を推奨しています。サイズ感に迷う場合は、少し余裕のあるサイズをお選びください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "サイズに誤差はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "製造工程の特性上、サイズには約1〜2cm程度の個体差が生じる場合があります。あらかじめご了承ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "商品画像（モデル画像）について",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "商品画像は着用イメージを伝えるための参考画像です。実際の商品とは、色味・サイズ感・見え方に若干の差が生じる場合があります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "利用できる支払い方法は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "お支払い方法はBASEが提供する決済方法に準拠します。クレジットカード、PayPal、その他購入画面に表示される決済方法をご利用いただけます。お支払いはご注文確定時に行われます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "商品の発送時期はいつですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "すべての商品は受注生産です。ご注文確定後に製作を開始し、完成次第発送されます。製作・配送期間は商品やお届け先の国・地域によって異なります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "追跡番号（トラッキング）はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "発送後、追跡番号が発行される場合は、通知または注文情報からご確認いただけます。配送方法や国により、追跡ができない場合もあります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "海外配送は可能ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい、海外配送に対応しています。配送可能地域や条件は商品や配送先によって異なります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "関税・輸入税はかかりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "お届け先の国・地域によっては、関税や輸入税、通関手数料が発生する場合があります。これらの費用はお客様のご負担となります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "販売価格について",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "販売価格には、製作費・素材費・印刷費・運営コストなどが含まれています。すべて受注生産のため、為替や原材料価格の変動により価格が変更される場合があります。"
+      }
     }
-  </style>
+  ]
+}
+</script>
+
 </head>
+
 <body>
-  <main class="wrap">
-    <div class="brand" aria-hidden="true">
-      <div class="logo"><span>TCDA</span></div>
-      <div class="brandname">Transcend Color Digital Apparel</div>
-    </div>
 
-    <h1>FAQ / GUIDE</h1>
-    <p class="sub" id="subtitle">質問（Q）をタップすると回答（A）が表示されます。</p>
+<header>
+  <h1>FAQ / GUIDE</h1>
+  <p class="jp">質問をタップすると回答が表示されます</p>
+  <p class="en">Tap a question to reveal the answer.</p>
 
-    <div class="lang">
-      <div class="seg" role="group" aria-label="Language switch">
-        <button id="btnJP" type="button" aria-pressed="true">日本語</button>
-        <button id="btnEN" type="button" aria-pressed="false">English</button>
-      </div>
-    </div>
+  <div class="lang-switch">
+    <button onclick="setLang('jp')">日本語</button>
+    <button onclick="setLang('en')">English</button>
+  </div>
+</header>
 
-    <div id="faqRoot" aria-live="polite"></div>
+<div class="section">
 
-    <footer>Transcend Color Digital Apparel</footer>
-  </main>
+<div class="section-title">RETURNS & EXCHANGES</div>
+<div class="faq-item">
+  <div class="faq-q jp">返品・交換はできますか？</div>
+  <div class="faq-a jp">
+    当ショップの商品はすべてオンデマンド生産（受注生産）のため、
+    お客様都合による返品・交換はお受けしておりません。<br />
+    ただし、初期不良や当店の不備による誤配送があった場合は、
+    状況確認のうえ対応いたします。商品到着後、できるだけ早くご連絡ください。
+  </div>
 
-  <script>
-    const DATA = {
-      jp: {
-        subtitle: "質問（Q）をタップすると回答（A）が表示されます。",
-        sections: [
-          {
-            title: "RETURNS & EXCHANGES",
-            items: [
-              {
-                q: "返品・交換はできますか？",
-                a: [
-                  "原則として、お客様都合による返品・交換はお受けしておりません。",
-                  "当ショップの商品はすべてご注文後に制作されるオンデマンド生産（受注生産）のためです。"
-                ]
-              },
-              {
-                q: "初期不良・誤配送の場合は？",
-                a: [
-                  "商品に不備（初期不良）または当店都合の誤配送があった場合は、状況確認のうえ対応いたします。",
-                  "商品到着後、できるだけ早く「お問い合わせ」よりご連絡ください（内容が分かる写真があるとスムーズです）。"
-                ],
-                note: "オンデマンド生産のため、在庫交換ではなく再制作での対応となる場合があります。"
-              },
-              {
-                q: "サイズが合わなかった場合は？",
-                a: [
-                  "サイズ違い等、お客様都合による交換はお受けしておりません。",
-                  "ご購入前にサイズガイドをご確認ください。"
-                ]
-              }
-            ]
-          },
+  <div class="faq-q en">Can I return or exchange an item?</div>
+  <div class="faq-a en">
+    All items are made to order, so we do not accept returns or exchanges based on customer preference.<br />
+    If your item is defective or incorrectly delivered due to our error, we will assist after confirming the situation.
+    Please contact us as soon as possible after receiving the item.
+  </div>
+</div>
 
-          {
-            title: "SIZE GUIDE",
-            items: [
-              {
-                q: "サイズはどのように選べばいいですか？",
-                a: [
-                  "お手持ちの“いちばん好きな服”を平置きで測り、商品ページのサイズ表と近い数値を選ぶのが最短で失敗を減らせます。",
-                  "トップスは「身幅（平置き）×2＝仕上がり胸囲」を目安に、ヌード胸囲＋ゆとりで選ぶのがおすすめです。"
-                ]
-              },
-              {
-                q: "サイズに誤差はありますか？",
-                a: [
-                  "採寸方法や製造工程により、表記サイズから±1〜2cm程度の誤差が生じる場合があります。",
-                  "同一サイズでも個体差が出ることがあります。"
-                ]
-              },
-              {
-                q: "サイズ感（フィット感）の目安はありますか？",
-                a: [
-                  "商品によりシルエット（ゆったり／フィット寄り）が異なります。",
-                  "迷った場合は、身幅（平置き）を優先し、次に着丈・袖丈の順で比較するのがおすすめです。"
-                ]
-              }
-            ]
-          },
+<div class="section-title">SIZE GUIDE</div>
+<div class="faq-item">
+  <div class="faq-q jp">サイズはどのように選べばいいですか？</div>
+  <div class="faq-a jp">
+    商品ページに掲載しているサイズガイドをご確認ください。
+    お手持ちの服を平置きで測り、身幅・着丈・袖丈を比較する方法を推奨しています。
+    サイズ感に迷う場合は、少し余裕のあるサイズをお選びください。
+  </div>
 
-          {
-            title: "CARE",
-            items: [
-              {
-                q: "洗濯・お手入れ方法は？",
-                a: [
-                  "プリントを長持ちさせるため、裏返してネットに入れ、低温での洗濯をおすすめします。",
-                  "乾燥機は縮み・色変化の原因になるため避けてください。"
-                ]
-              },
-              {
-                q: "プリントや柄位置に個体差はありますか？",
-                a: [
-                  "製造工程上、柄位置・縫製・色の出方にわずかな個体差が生じる場合があります。"
-                ]
-              }
-            ]
-          },
+  <div class="faq-q en">How should I choose my size?</div>
+  <div class="faq-a en">
+    Please refer to the size guide on each product page.
+    We recommend comparing measurements with a similar item you already own.
+    If unsure, choosing a slightly looser fit is generally recommended.
+  </div>
+</div>
 
-          {
-            title: "PRODUCT IMAGES",
-            items: [
-              {
-                q: "商品画像（モデル画像）について",
-                a: [
-                  "掲載画像はできる限り実物に近い色味になるよう調整していますが、閲覧環境（モニター設定等）により見え方が異なる場合があります。",
-                  "モデル着用画像はイメージです。実寸は各商品ページのサイズ表をご確認ください。"
-                ]
-              }
-            ]
-          },
+<div class="faq-item">
+  <div class="faq-q jp">サイズに誤差はありますか？</div>
+  <div class="faq-a jp">
+    製造工程の特性上、サイズには約1〜2cm程度の個体差が生じる場合があります。
+    あらかじめご了承ください。
+  </div>
 
-          {
-            title: "PAYMENT METHODS",
-            items: [
-              {
-                q: "利用できる支払い方法は？（代金の支払方法・時期）",
-                a: [
-                  "お支払い方法は、BASEが提供する決済方法に準拠します。",
-                  "クレジットカード、PayPal、その他購入画面に表示される決済方法をご利用いただけます。",
-                  "お支払い時期は、ご注文確定時となります。"
-                ],
-                note: "決済手数料等が発生する方法は、購入画面に表示される案内に従ってください。"
-              }
-            ]
-          },
+  <div class="faq-q en">Are there size variations?</div>
+  <div class="faq-a en">
+    Due to the production process, slight variations of approximately 1–2 cm may occur.
+    Please understand this before ordering.
+  </div>
+</div>
 
-          {
-            title: "SHIPPING & FEES",
-            items: [
-              {
-                q: "送料はどのように決まりますか？",
-                a: [
-                  "送料は、配送先の国・地域、注文内容、配送方法により異なります。",
-                  "チェックアウト（購入手続き）画面に表示される送料をご確認ください。"
-                ]
-              },
-              {
-                q: "配送にはどれくらい時間がかかりますか？（商品のお届け時期）",
-                a: [
-                  "当ショップの商品はすべてオンデマンド生産（受注生産）です。",
-                  "ご注文確定後、制作期間を経て発送されます。",
-                  "制作期間および配送日数は商品やお届け先の国・地域により異なります。",
-                  "詳しい目安は各商品ページをご確認ください。"
-                ]
-              },
-              {
-                q: "追跡番号（トラッキング）はありますか？",
-                a: [
-                  "発送後、追跡番号が発行される場合は通知または注文情報からご確認いただけます（配送方法・国により異なる場合があります）。"
-                ]
-              },
-              {
-                q: "「配達完了」なのに届きません",
-                a: [
-                  "まず以下をご確認ください：",
-                  "1) ポスト・宅配ボックス・玄関周り",
-                  "2) 同居人／管理人／近隣への誤配",
-                  "3) 配送会社の追跡詳細",
-                  "未解決の場合は、追跡番号を添えてお問い合わせください。状況確認をサポートします。"
-                ]
-              }
-            ]
-          },
+<div class="section-title">PRODUCT IMAGES</div>
+<div class="faq-item">
+  <div class="faq-q jp">商品画像（モデル画像）について</div>
+  <div class="faq-a jp">
+    商品画像は着用イメージを伝えるための参考画像です。
+    実際の商品とは、色味・サイズ感・見え方に若干の差が生じる場合があります。
+  </div>
 
-          {
-            title: "INTERNATIONAL SHIPPING",
-            items: [
-              {
-                q: "海外配送は可能ですか？",
-                a: [
-                  "海外配送に対応しています（配送可否や方法はお届け先の国・地域により異なる場合があります）。",
-                  "購入画面で配送先を選択し、表示される配送オプションをご確認ください。"
-                ]
-              },
-              {
-                q: "関税や輸入税はかかりますか？",
-                a: [
-                  "国・地域によっては、関税・輸入税・通関手数料などが発生する場合があります。",
-                  "これらの費用が発生した場合、原則として受取人様のご負担となります。"
-                ]
-              }
-            ]
-          },
+  <div class="faq-q en">About product images</div>
+  <div class="faq-a en">
+    Product images are for reference only.
+    Actual products may differ slightly in color, fit, or appearance depending on viewing environment.
+  </div>
+</div>
 
-          {
-            title: "PRODUCT & PRICING",
-            items: [
-              {
-                q: "販売価格について",
-                a: [
-                  "表示されている販売価格には、商品の制作費・印刷費・素材費・運営コストが含まれています。",
-                  "すべての商品はオンデマンド生産（受注生産）のため、価格は予告なく変更される場合があります。",
-                  "為替変動や原材料価格の影響により、同一商品でも販売時期によって価格が異なる場合があります。"
-                ]
-              }
-            ]
-          }
-        ]
-      },
+<div class="section-title">PAYMENT METHODS</div>
+<div class="faq-item">
+  <div class="faq-q jp">利用できる支払い方法は？</div>
+  <div class="faq-a jp">
+    お支払い方法はBASEが提供する決済方法に準拠します。クレジットカード、PayPal、
+    その他購入画面に表示される決済方法をご利用いただけます。お支払いはご注文確定時に行われます。
+  </div>
 
-      en: {
-        subtitle: "Tap a question to reveal the answer.",
-        sections: [
-          {
-            title: "RETURNS & EXCHANGES",
-            items: [
-              {
-                q: "Can I return or exchange my item?",
-                a: [
-                  "We do not accept returns or exchanges based on customer preference.",
-                  "All items are made to order after purchase."
-                ]
-              },
-              {
-                q: "What if my item is defective or incorrect?",
-                a: [
-                  "If your item is defective or incorrectly delivered due to our error, we will assist after confirming the situation.",
-                  "Please contact us as soon as possible after receiving the item (photos help us process faster)."
-                ],
-                note: "Because items are made to order, we may resolve issues by re-producing the item rather than exchanging stock."
-              },
-              {
-                q: "Can I exchange for a different size?",
-                a: [
-                  "We do not offer size exchanges based on customer preference.",
-                  "Please check the size guide before purchasing."
-                ]
-              }
-            ]
-          },
+  <div class="faq-q en">What payment methods are accepted?</div>
+  <div class="faq-a en">
+    Payment methods follow those provided by BASE. Available options include credit cards, PayPal,
+    and other methods displayed at checkout. Payment is required at the time the order is confirmed.
+  </div>
+</div>
 
-          {
-            title: "SIZE GUIDE",
-            items: [
-              {
-                q: "How should I choose my size?",
-                a: [
-                  "Measure your favorite garment flat and compare it with the size chart on the product page—this is the fastest way to reduce sizing mistakes.",
-                  "For tops, a helpful reference is: flat width × 2 = finished chest measurement."
-                ]
-              },
-              {
-                q: "Are there size variations?",
-                a: [
-                  "Due to measurement methods and the production process, actual sizes may vary by about ±1–2 cm.",
-                  "Minor individual differences may occur even within the same size."
-                ]
-              },
-              {
-                q: "Do you have a fit reference?",
-                a: [
-                  "Fit (relaxed vs. more fitted) varies by product.",
-                  "When in doubt, prioritize body width first, then length, then sleeve length."
-                ]
-              }
-            ]
-          },
+<div class="section-title">SHIPPING & DELIVERY</div>
+<div class="faq-item">
+  <div class="faq-q jp">商品の発送時期はいつですか？</div>
+  <div class="faq-a jp">
+    すべての商品は受注生産です。ご注文確定後に製作を開始し、完成次第発送されます。
+    製作・配送期間は商品やお届け先の国・地域によって異なります。
+  </div>
 
-          {
-            title: "CARE",
-            items: [
-              {
-                q: "How should I wash and care for the item?",
-                a: [
-                  "To preserve prints, wash inside out in a laundry bag at low temperature.",
-                  "Avoid tumble drying as it may cause shrinkage or color changes."
-                ]
-              },
-              {
-                q: "Are there variations in print placement?",
-                a: [
-                  "Due to the production process, slight variations in print placement, stitching, and color may occur."
-                ]
-              }
-            ]
-          },
+  <div class="faq-q en">When will my order be shipped?</div>
+  <div class="faq-a en">
+    All items are produced on a made-to-order basis. Production starts after your order is confirmed,
+    and items are shipped once completed. Production and shipping times vary depending on the product and destination.
+  </div>
+</div>
 
-          {
-            title: "PRODUCT IMAGES",
-            items: [
-              {
-                q: "About model images",
-                a: [
-                  "We adjust product images to look as close to the real item as possible, but appearance may vary depending on your screen settings.",
-                  "Model photos are for reference—please check each product page for measurements."
-                ]
-              }
-            ]
-          },
+<div class="faq-item">
+  <div class="faq-q jp">追跡番号（トラッキング）はありますか？</div>
+  <div class="faq-a jp">
+    発送後、追跡番号が発行される場合は、通知または注文情報からご確認いただけます。
+    配送方法や国により、追跡ができない場合もあります。
+  </div>
 
-          {
-            title: "PAYMENT METHODS",
-            items: [
-              {
-                q: "What payment methods are accepted? (Billing method & timing)",
-                a: [
-                  "Payment methods follow those provided by BASE.",
-                  "Available options include credit cards, PayPal, and other methods displayed during checkout.",
-                  "Payment is required at the time the order is confirmed."
-                ],
-                note: "For any fees related to certain payment methods, please follow the information shown at checkout."
-              }
-            ]
-          },
+  <div class="faq-q en">Will I receive a tracking number?</div>
+  <div class="faq-a en">
+    If a tracking number is issued, it will be provided via notification or order details.
+    Tracking availability depends on the shipping method and destination country.
+  </div>
+</div>
 
-          {
-            title: "SHIPPING & FEES",
-            items: [
-              {
-                q: "How are shipping fees calculated?",
-                a: [
-                  "Shipping fees vary depending on destination country/region, order contents, and shipping method.",
-                  "Please refer to the shipping fee shown during checkout."
-                ]
-              },
-              {
-                q: "How long does shipping take? (Delivery timing)",
-                a: [
-                  "All items are produced on a made-to-order basis.",
-                  "After your order is confirmed, the item will be produced and then shipped.",
-                  "Production and shipping times vary depending on the product and destination country.",
-                  "Please refer to each product page for estimated delivery times."
-                ]
-              },
-              {
-                q: "Will I get a tracking number?",
-                a: [
-                  "After shipment, tracking may be available depending on the carrier/destination.",
-                  "Please check your order details/notifications if a tracking number is issued."
-                ]
-              },
-              {
-                q: "It says delivered, but I didn’t receive it.",
-                a: [
-                  "Please check: (1) mailbox/parcel box/around your door, (2) household/building staff/neighbors, (3) tracking details.",
-                  "If still unresolved, contact us with the tracking number and we will help investigate."
-                ]
-              }
-            ]
-          },
+<div class="section-title">INTERNATIONAL SHIPPING</div>
+<div class="faq-item">
+  <div class="faq-q jp">海外配送は可能ですか？</div>
+  <div class="faq-a jp">
+    はい、海外配送に対応しています。配送可能地域や条件は商品や配送先によって異なります。
+  </div>
 
-          {
-            title: "INTERNATIONAL SHIPPING",
-            items: [
-              {
-                q: "Do you ship internationally?",
-                a: [
-                  "Yes, we ship internationally (availability and methods may vary by destination).",
-                  "Select your destination at checkout to see available options."
-                ]
-              },
-              {
-                q: "Will I need to pay customs duties or import taxes?",
-                a: [
-                  "Depending on your country/region, customs duties, import taxes, and clearance fees may apply.",
-                  "If incurred, these fees are generally the recipient’s responsibility."
-                ]
-              }
-            ]
-          },
+  <div class="faq-q en">Do you ship internationally?</div>
+  <div class="faq-a en">
+    Yes, international shipping is available. Availability and conditions vary depending on the product and destination.
+  </div>
+</div>
 
-          {
-            title: "PRODUCT & PRICING",
-            items: [
-              {
-                q: "About pricing",
-                a: [
-                  "The listed prices include production costs, printing, materials, and operational expenses.",
-                  "All items are made to order, and prices may change without prior notice.",
-                  "Due to exchange rate fluctuations and material costs, prices for the same product may vary depending on the time of purchase."
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    };
+<div class="faq-item">
+  <div class="faq-q jp">関税・輸入税はかかりますか？</div>
+  <div class="faq-a jp">
+    お届け先の国・地域によっては、関税や輸入税、通関手数料が発生する場合があります。
+    これらの費用はお客様のご負担となります。
+  </div>
 
-    let currentLang = "jp";
+  <div class="faq-q en">Will I need to pay customs duties or import taxes?</div>
+  <div class="faq-a en">
+    Depending on your country or region, customs duties, import taxes, or handling fees may apply.
+    These charges are the responsibility of the customer.
+  </div>
+</div>
 
-    function el(tag, attrs={}, children=[]){
-      const n = document.createElement(tag);
-      for (const [k,v] of Object.entries(attrs)){
-        if (k === "class") n.className = v;
-        else if (k.startsWith("aria-")) n.setAttribute(k, v);
-        else if (k === "html") n.innerHTML = v;
-        else n[k] = v;
-      }
-      for (const c of children){
-        if (typeof c === "string") n.appendChild(document.createTextNode(c));
-        else n.appendChild(c);
-      }
-      return n;
-    }
+<div class="section-title">PRODUCT & PRICING</div>
+<div class="faq-item">
+  <div class="faq-q jp">販売価格について</div>
+  <div class="faq-a jp">
+    販売価格には、製作費・素材費・印刷費・運営コストなどが含まれています。
+    すべて受注生産のため、為替や原材料価格の変動により価格が変更される場合があります。
+  </div>
 
-    function render(){
-      const root = document.getElementById("faqRoot");
-      root.innerHTML = "";
+  <div class="faq-q en">About pricing</div>
+  <div class="faq-a en">
+    Listed prices include production, materials, printing, and operational costs.
+    As all items are made to order, prices may change due to exchange rates or material costs.
+  </div>
+</div>
 
-      document.documentElement.lang = (currentLang === "jp") ? "ja" : "en";
-      document.getElementById("subtitle").textContent = DATA[currentLang].subtitle;
+</div>
 
-      DATA[currentLang].sections.forEach((sec, sIndex) => {
-        const secWrap = el("section", { class:"section" });
-        secWrap.appendChild(el("h2", {}, [sec.title]));
+<footer>
+  © <span id="year"></span> Transcend Color Digital Apparel
+</footer>
 
-        sec.items.forEach((it, iIndex) => {
-          const id = `a_${currentLang}_${sIndex}_${iIndex}`;
+<script>
+function setLang(lang) {
+  document.documentElement.lang = (lang === 'jp') ? 'ja' : 'en';
 
-          const item = el("div", { class:"item" });
-          const btn = el("button", {
-            class:"qbtn",
-            type:"button",
-            "aria-expanded":"false",
-            "aria-controls": id
-          });
+  document.querySelectorAll('.jp').forEach(el => el.style.display = (lang === 'jp') ? 'block' : 'none');
+  document.querySelectorAll('.en').forEach(el => el.style.display = (lang === 'en') ? 'block' : 'none');
 
-          btn.appendChild(el("div", { class:"qicon" }, ["Q"]));
-          btn.appendChild(el("div", { class:"qtext" }, [it.q]));
-          btn.appendChild(el("div", { class:"plus", "aria-hidden":"true" }, ["+"]));
+  // URLに言語を残す（SEOというよりUX用 / 共有時の再現性UP）
+  const url = new URL(window.location.href);
+  if (lang === 'en') url.searchParams.set('lang', 'en');
+  else url.searchParams.delete('lang');
+  window.history.replaceState({}, '', url.toString());
+}
 
-          const ans = el("div", { class:"ans", id, role:"region" });
-          const box = el("div", { class:"box" });
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const a = q.nextElementSibling;
+    a.style.display = a.style.display === 'block' ? 'none' : 'block';
+  });
+});
 
-          // answer body
-          const lines = (it.a || []).filter(Boolean);
-          if (lines.length){
-            // If first line looks like a numbered list starter, we just print as paragraphs + optional UL.
-            // We'll build: first 1-2 as paragraphs, and if lines contain "1)" style, we make list.
-            const listLines = lines.filter(x => /^\s*\d\)/.test(x) || /^\s*\d\./.test(x));
-            const normalLines = lines.filter(x => !(/^\s*\d\)/.test(x) || /^\s*\d\./.test(x)));
+// 初期言語（URL ?lang=en があれば英語）
+const initial = new URLSearchParams(window.location.search).get('lang') === 'en' ? 'en' : 'jp';
+setLang(initial);
 
-            normalLines.forEach(t => box.appendChild(el("div", {}, ["A. " + t])));
-            if (listLines.length){
-              const ul = el("ul");
-              listLines.forEach(t => ul.appendChild(el("li", {}, [t.replace(/^\s*\d[\)\.]\s*/, "")])));
-              box.appendChild(ul);
-            }
-          }
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
-          if (it.note){
-            box.appendChild(el("div", { class:"note" }, ["※ " + it.note]));
-          }
-
-          ans.appendChild(box);
-
-          btn.addEventListener("click", () => {
-            const expanded = btn.getAttribute("aria-expanded") === "true";
-            btn.setAttribute("aria-expanded", String(!expanded));
-            ans.style.display = expanded ? "none" : "block";
-            btn.querySelector(".plus").textContent = expanded ? "+" : "×";
-          });
-
-          item.appendChild(btn);
-          item.appendChild(ans);
-          secWrap.appendChild(item);
-        });
-
-        root.appendChild(secWrap);
-      });
-    }
-
-    document.getElementById("btnJP").addEventListener("click", () => {
-      currentLang = "jp";
-      document.getElementById("btnJP").setAttribute("aria-pressed","true");
-      document.getElementById("btnEN").setAttribute("aria-pressed","false");
-      render();
-    });
-
-    document.getElementById("btnEN").addEventListener("click", () => {
-      currentLang = "en";
-      document.getElementById("btnJP").setAttribute("aria-pressed","false");
-      document.getElementById("btnEN").setAttribute("aria-pressed","true");
-      render();
-    });
-
-    render();
-  </script>
 </body>
 </html>
