@@ -1,36 +1,45 @@
 (() => {
-  // ====== Config ======
-  const LAST_UPDATED = "2025-12-19"; // 手動で更新してOK（将来GitHub Actionsで自動化も可能）
+  const LAST_UPDATED = "2025-12-19";
   const IMPORTANT_OPEN_DEFAULT = true;
 
-  // ====== Copy (UI texts) ======
   const UI = {
     ja: {
       sub: "質問（Q）をタップすると回答（A）が表示されます。重要項目は最初から開いています。",
-      placeholder: "キーワードで検索（例：関税 / 返品 / 支払い）",
+      placeholder: "キーワードで検索（例：関税 / 返品 / 支払い / 推定）",
       clear: "クリア",
       hint1: "検索は表示中の言語のみ対象です。",
-      hint2: "例：customs / returns / payment",
+      hint2: "例：customs / returns / payment / estimate",
       empty: "該当するFAQが見つかりませんでした。別のキーワードで試してください。",
       lastUpdated: `Last updated: ${LAST_UPDATED}`,
       schemaName: "TCDA FAQ / GUIDE",
+
+      noticeTitle: "SIZE RECOMMENDATION NOTICE",
+      noticeBody: `当サイトの「おすすめサイズ」は、入力いただいた数値とサイズ表（仕上がり寸法）をもとに算出した目安です。<br>
+      身長・体重・BMI・性別などから算出する「推定入力」は、ヌード寸法が分からない場合の補助機能であり、実測値ではありません。<br>
+      より正確に選ぶには、可能な限りヌード寸法（例：ヌード胸囲／足長）を実測してご入力ください。<br>
+      <div class="mini">推定結果は、必要に応じて「推定値をヌード寸法にセット」で反映できます（自動で上書きはしません）。</div>`
     },
+
     en: {
       sub: "Tap a question to reveal the answer. Important items are opened by default.",
-      placeholder: "Search keywords (e.g., customs / returns / payment)",
+      placeholder: "Search keywords (e.g., customs / returns / payment / estimate)",
       clear: "Clear",
       hint1: "Search applies only to the currently displayed language.",
-      hint2: "Examples: customs / returns / payment",
+      hint2: "Examples: customs / returns / payment / estimate",
       empty: "No matching FAQs found. Try another keyword.",
       lastUpdated: `Last updated: ${LAST_UPDATED}`,
       schemaName: "TCDA FAQ / GUIDE",
+
+      noticeTitle: "SIZE RECOMMENDATION NOTICE",
+      noticeBody: `The “Recommended size” is a guideline calculated from your inputs and our size charts (finished garment measurements).<br>
+      The “Estimated input” (based on height/weight/BMI/sex, etc.) is a support feature when you don’t know your nude measurements, and it is not an actual body measurement.<br>
+      For the best accuracy, please measure and enter your nude measurements whenever possible (e.g., nude chest/bust, foot length).<br>
+      <div class="mini">You may apply an estimated value to the nude measurement field using “Apply estimated value” (it will not overwrite your input automatically).</div>`
     }
   };
 
-  // ====== FAQ Data ======
-  // Tags: keep short + consistent
+  // ====== FAQ DATA ======
   const FAQ = [
-    // RETURNS & EXCHANGES
     {
       section: { ja: "RETURNS & EXCHANGES", en: "RETURNS & EXCHANGES" },
       items: [
@@ -73,7 +82,6 @@
       ]
     },
 
-    // PAYMENT METHODS
     {
       section: { ja: "PAYMENT METHODS", en: "PAYMENT METHODS" },
       items: [
@@ -94,7 +102,6 @@
       ]
     },
 
-    // SHIPPING & DELIVERY
     {
       section: { ja: "SHIPPING & DELIVERY", en: "SHIPPING & DELIVERY" },
       items: [
@@ -123,7 +130,6 @@
       ]
     },
 
-    // INTERNATIONAL SHIPPING
     {
       section: { ja: "INTERNATIONAL SHIPPING", en: "INTERNATIONAL SHIPPING" },
       items: [
@@ -152,7 +158,6 @@
       ]
     },
 
-    // PRODUCT & PRICING
     {
       section: { ja: "PRODUCT & PRICING", en: "PRODUCT & PRICING" },
       items: [
@@ -171,12 +176,11 @@
       ]
     },
 
-    // SIZE / CARE (GUIDE)
     {
       section: { ja: "SIZE / CARE (GUIDE)", en: "SIZE / CARE (GUIDE)" },
       items: [
         {
-          id: "size_choose",
+          id: "size_choose_basic",
           important: false,
           tags: { ja: ["サイズ"], en: ["Size"] },
           q: { ja: "自分に合うサイズはどう選べばいいですか？", en: "How should I choose my size?" },
@@ -202,7 +206,82 @@
       ]
     },
 
-    // PRODUCT IMAGES (AI MODEL)
+    {
+      section: { ja: "RECOMMENDED SIZE / ESTIMATED INPUT", en: "RECOMMENDED SIZE / ESTIMATED INPUT" },
+      items: [
+        {
+          id: "rec_is_final",
+          important: true,
+          tags: { ja: ["重要", "おすすめサイズ"], en: ["Important", "Recommended size"] },
+          q: { ja: "Q1. 「おすすめサイズ」は確定ですか？", en: "Q1. Is the “Recommended size” final?" },
+          a: {
+            ja: `いいえ。おすすめサイズは、入力値とサイズ表から算出した目安です。体型・着用感の好み・測定誤差により最適サイズは前後します。`,
+            en: `No. It’s a guideline based on your inputs and the size chart. Fit may vary depending on body type, preference, and measurement tolerance.`
+          }
+        },
+        {
+          id: "what_is_estimated",
+          important: false,
+          tags: { ja: ["推定入力", "BMI"], en: ["Estimated input", "BMI"] },
+          q: { ja: "Q2. 「推定入力（身長＋体重/BMI＋性別）」とは何ですか？", en: "Q2. What is “Estimated input (height + weight/BMI + sex)”?" },
+          a: {
+            ja: `ヌード寸法が分からない場合に、平均値データを参考にしてヌード寸法を推定する補助機能です。実測ではありません。`,
+            en: `It’s a helper feature that estimates nude measurements using reference averages when you don’t know your exact measurements. It is not a real measurement.`
+          }
+        },
+        {
+          id: "auto_apply",
+          important: false,
+          tags: { ja: ["推定入力", "上書き"], en: ["Estimated input", "Overwrite"] },
+          q: { ja: "Q3. 推定結果（例：推定胸囲99cm）は、ヌード胸囲に自動反映されますか？", en: "Q3. Will the estimated result auto-fill the nude measurement field?" },
+          a: {
+            ja: `自動では反映しません。誤解や上書きを防ぐため、必要な場合のみ「推定値をヌード寸法にセット」で反映できます。`,
+            en: `It will not auto-fill by default. To avoid overwriting your input, you can apply it manually using “Apply estimated value”.`
+          }
+        },
+        {
+          id: "measured_vs_estimated",
+          important: true,
+          tags: { ja: ["重要", "実測"], en: ["Important", "Measured"] },
+          q: { ja: "Q4. 推定入力と実測入力、どちらが正確ですか？", en: "Q4. Which is more accurate: estimated or measured input?" },
+          a: {
+            ja: `実測入力が優先です。推定入力は便利ですが、個人差があるため誤差が出ることがあります。`,
+            en: `Measured values are more accurate. Estimated values are convenient, but they can be off due to individual differences.`
+          }
+        },
+        {
+          id: "how_to_measure_chest",
+          important: false,
+          tags: { ja: ["測り方", "胸囲"], en: ["How to measure", "Chest/Bust"] },
+          q: { ja: "Q5. ヌード胸囲はどう測ればいいですか？", en: "Q5. How do I measure nude chest/bust?" },
+          a: {
+            ja: `メジャーを床と水平にし、胸の最も高い位置（バストトップ/胸囲最大）を一周して測ります。息を止めず、自然な姿勢で測定してください。`,
+            en: `Wrap a tape measure around the fullest part of the chest/bust, keeping it level. Measure in a natural posture without holding your breath.`
+          }
+        },
+        {
+          id: "what_inputs_improve",
+          important: false,
+          tags: { ja: ["精度", "好み"], en: ["Accuracy", "Preference"] },
+          q: { ja: "Q6. どんな入力を増やすと精度が上がりますか？", en: "Q6. What inputs improve accuracy?" },
+          a: {
+            ja: `一般に、<b>身長＋体重（またはBMI）＋性別＋好み（ぴったり/標準/ゆったり）</b>の情報があると、推定の精度と提案の納得感が上がります。`,
+            en: `Providing <b>height + weight (or BMI) + sex + fit preference (snug/regular/relaxed)</b> generally improves the quality of recommendations.`
+          }
+        },
+        {
+          id: "intl_sizechart",
+          important: false,
+          tags: { ja: ["海外", "単位"], en: ["International", "Units"] },
+          q: { ja: "Q7. 海外ユーザー向けのサイズ表は違いますか？", en: "Q7. Are size charts different for international customers?" },
+          a: {
+            ja: `同じ商品であれば、サイズ表（仕上がり寸法）は基本的に共通です。表示は JP=cm / EN=inch のように単位を切り替えています。`,
+            en: `For the same product, finished measurements are basically the same. We switch the display unit (e.g., JP=cm / EN=inch) for convenience.`
+          }
+        }
+      ]
+    },
+
     {
       section: { ja: "PRODUCT IMAGES", en: "PRODUCT IMAGES" },
       items: [
@@ -279,15 +358,15 @@
   const elSearch = document.getElementById("faqSearch");
   const elClear = document.getElementById("clearSearch");
   const elSchema = document.getElementById("faqSchema");
+  const elNoticeTitle = document.getElementById("noticeTitle");
+  const elNoticeBody = document.getElementById("noticeBody");
 
   const btnJa = document.getElementById("btn-ja");
   const btnEn = document.getElementById("btn-en");
 
-  // ====== State ======
   let lang = "ja";
   let lastQuery = "";
 
-  // ====== Helpers ======
   const escHtml = (s) =>
     String(s)
       .replaceAll("&","&amp;")
@@ -296,16 +375,20 @@
       .replaceAll('"',"&quot;")
       .replaceAll("'","&#39;");
 
-  // highlight on plain-text fields (we apply to q only; answer stays HTML)
+  function textFromHtml(html){
+    // remove tags + normalize spaces
+    return String(html).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  }
+
   function highlightText(text, qLower) {
     if (!qLower) return escHtml(text);
-    const raw = text;
-    const idx = raw.toLowerCase().indexOf(qLower);
-    if (idx === -1) return escHtml(raw);
+    const raw = String(text);
+    const i = raw.toLowerCase().indexOf(qLower);
+    if (i === -1) return escHtml(raw);
 
-    const before = raw.slice(0, idx);
-    const hit = raw.slice(idx, idx + qLower.length);
-    const after = raw.slice(idx + qLower.length);
+    const before = raw.slice(0, i);
+    const hit = raw.slice(i, i + qLower.length);
+    const after = raw.slice(i + qLower.length);
     return `${escHtml(before)}<span class="match">${escHtml(hit)}</span>${escHtml(after)}`;
   }
 
@@ -323,15 +406,16 @@
     elEmpty.textContent = t.empty;
     elLast.textContent = t.lastUpdated;
 
+    elNoticeTitle.textContent = t.noticeTitle;
+    elNoticeBody.innerHTML = t.noticeBody;
+
     btnJa.setAttribute("aria-pressed", lang === "ja" ? "true" : "false");
     btnEn.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
 
-    // year
     elYear.textContent = String(new Date().getFullYear());
   }
 
   function buildSchema(visibleFaqItems) {
-    // FAQPage: mainEntity = visible items (current language)
     const t = UI[lang];
 
     const mainEntity = visibleFaqItems.map(it => ({
@@ -339,8 +423,7 @@
       "name": it.q[lang],
       "acceptedAnswer": {
         "@type": "Answer",
-        // JSON-LDはテキスト推奨。HTMLタグは落とす（雑に消す）
-        "text": it.a[lang].replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()
+        "text": textFromHtml(it.a[lang])
       }
     }));
 
@@ -357,8 +440,6 @@
   function render() {
     const q = (lastQuery || "").trim().toLowerCase();
     const sections = [];
-
-    // flatten for filtering + schema
     const visibleForSchema = [];
 
     for (const group of FAQ) {
@@ -366,12 +447,10 @@
 
       for (const it of group.items) {
         const qText = it.q[lang];
-        const aHtml = it.a[lang]; // answer kept as HTML
+        const aText = textFromHtml(it.a[lang]);
+        const tags = (it.tags[lang] || []).join(" ");
 
-        // searchable text (tags included)
-        const tagStr = (it.tags[lang] || []).join(" ");
-        const hay = `${qText} ${tagStr} ${aHtml.replace(/<[^>]*>/g, " ")}`.toLowerCase();
-
+        const hay = `${qText} ${tags} ${aText}`.toLowerCase();
         const ok = !q || hay.includes(q);
 
         if (ok) {
@@ -383,10 +462,8 @@
       if (items.length) sections.push({ title: group.section[lang], items });
     }
 
-    // empty state
     elEmpty.style.display = sections.length ? "none" : "block";
 
-    // render DOM
     elRoot.innerHTML = sections.map(sec => {
       const secId = "sec-" + sec.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
       return `
@@ -417,7 +494,6 @@
       `;
     }).join("");
 
-    // schema update
     buildSchema(visibleForSchema);
   }
 
@@ -427,18 +503,12 @@
     render();
   }
 
-  // ====== Events ======
   btnJa.addEventListener("click", () => { lang = "ja"; setUI(); render(); });
   btnEn.addEventListener("click", () => { lang = "en"; setUI(); render(); });
 
   elClear.addEventListener("click", clearSearch);
+  elSearch.addEventListener("input", () => { lastQuery = elSearch.value; render(); });
 
-  elSearch.addEventListener("input", () => {
-    lastQuery = elSearch.value;
-    render();
-  });
-
-  // ====== Init ======
   setUI();
   render();
 })();
