@@ -5,47 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
-  <meta name="description" content="Transcend Color Digital Apparel (TCDA) のFAQ / GUIDE。支払い、配送、関税、返品、サイズ、お手入れ、商品画像についてまとめています。" />
+  <meta name="description" content="Transcend Color Digital Apparel (TCDA) のFAQ / GUIDE。支払い、配送、関税、返品、サイズ、商品画像についてまとめています。" />
   <link rel="canonical" href="https://faq.tcda.shop/" />
   <meta name="robots" content="index,follow" />
 
-  <!-- CSS -->
+  <!-- Styles -->
   <link rel="stylesheet" href="./assets/css/style.css" />
 
-  <!-- Schema.org FAQPage（※デフォルト言語：日本語） -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"返品・交換はできますか？",
-        "acceptedAnswer":{"@type":"Answer","text":"当ショップの商品はオンデマンド生産（受注生産）のため、お客様都合による返品・交換はお受けしておりません。ただし、商品に初期不良があった場合や当店の不備による誤配送の場合は、状況確認のうえ対応いたします。商品到着後、できるだけ早くお問い合わせください。"}
-      },
-      {
-        "@type":"Question",
-        "name":"利用できる支払い方法は？（代金の支払方法・時期）",
-        "acceptedAnswer":{"@type":"Answer","text":"お支払い方法は、BASEが提供する決済方法に準拠します。クレジットカード、PayPal、その他購入画面に表示される決済方法をご利用いただけます。お支払い時期は、ご注文確定時となります。"}
-      },
-      {
-        "@type":"Question",
-        "name":"商品の発送・お届け時期は？",
-        "acceptedAnswer":{"@type":"Answer","text":"当ショップの商品はすべてオンデマンド生産（受注生産）です。ご注文確定後、制作期間を経て発送されます。制作期間および配送日数は商品やお届け先の国・地域により異なります。詳しい目安は各商品ページをご確認ください。"}
-      },
-      {
-        "@type":"Question",
-        "name":"関税・輸入税はかかりますか？",
-        "acceptedAnswer":{"@type":"Answer","text":"お届け先の国・地域によっては、関税・輸入税・通関手数料が発生する場合があります（原則：購入者負担）。税額や条件は各国の規定により異なります。"}
-      },
-      {
-        "@type":"Question",
-        "name":"商品画像のモデルは実在の人物ですか？",
-        "acceptedAnswer":{"@type":"Answer","text":"商品画像に使用しているモデルは、AIによって生成されたイメージモデルを使用しています。実在の人物ではありません。"}
-      }
-    ]
-  }
-  </script>
+  <!-- JSON-LD (FAQPage) : JSが言語に合わせて中身を更新 -->
+  <script type="application/ld+json" id="faqSchema">{}</script>
 </head>
 
 <body>
@@ -53,59 +21,44 @@
     <header class="top">
       <div class="brand" aria-label="Transcend Color Digital Apparel">
         <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3l7 4v6c0 5-3 8-7 8s-7-3-7-8V7l7-4z" stroke="currentColor" stroke-width="1.5" opacity=".9"/>
-            <path d="M8 11h8M12 7v10" stroke="currentColor" stroke-width="1.5" opacity=".9"/>
-          </svg>
+          <!-- IMPORTANT: file name must be LOGO.png (case-sensitive on GitHub Pages) -->
+          <img src="./LOGO.png" alt="TCDA logo" />
         </div>
         <div class="name">Transcend Color Digital Apparel</div>
       </div>
 
       <div class="lang" role="group" aria-label="Language switch">
-        <button type="button" id="btn-jp" aria-pressed="true">JP</button>
+        <button type="button" id="btn-ja" aria-pressed="true">JP</button>
         <button type="button" id="btn-en" aria-pressed="false">EN</button>
       </div>
     </header>
 
     <h1>FAQ / GUIDE</h1>
-    <p class="sub" data-i18n="tap">質問（Q）をタップすると回答（A）が表示されます。重要項目は最初から開いています。</p>
+    <p class="sub" id="subText"></p>
 
     <!-- Search -->
     <div class="searchbar" role="search" aria-label="FAQ search">
       <div class="glass" aria-hidden="true">⌕</div>
-      <input id="faqSearch" type="search" inputmode="search" autocomplete="off"
-             placeholder="キーワードで検索（例：関税 / 返品 / 支払い）" />
-      <button type="button" id="clearSearch">クリア</button>
+      <input id="faqSearch" type="search" inputmode="search" autocomplete="off" />
+      <button type="button" id="clearSearch"></button>
     </div>
 
     <div class="hintrow">
-      <div class="pill" data-i18n="hint1">検索は表示中の言語のみ対象です。</div>
-      <div class="pill" data-i18n="hint2">例：customs / returns / payment</div>
+      <div class="pill" id="hint1"></div>
+      <div class="pill" id="hint2"></div>
     </div>
 
-    <div class="empty" id="emptyState" data-i18n="empty">
-      該当するFAQが見つかりませんでした。別のキーワードで試してください。
-    </div>
+    <div class="empty" id="emptyState"></div>
 
-    <!-- FAQ container（中身はJSで生成） -->
-    <div id="faqRoot" class="faq-root" aria-live="polite"></div>
+    <!-- Sections will be rendered here -->
+    <div id="faqRoot"></div>
 
-    <footer class="footer">
-      <div>© <span id="year"></span> Transcend Color Digital Apparel</div>
-      <div class="updated">
-        <span data-i18n="updatedLabel">Last updated</span>:
-        <span id="lastUpdated">—</span>
-      </div>
+    <footer>
+      © <span id="year"></span> Transcend Color Digital Apparel
+      <div class="footer-note" id="lastUpdated"></div>
     </footer>
-
-    <noscript>
-      <div class="noscript">
-        JavaScriptが無効のためFAQが表示できません。JavaScriptを有効にしてください。
-      </div>
-    </noscript>
   </main>
 
-  <!-- JS -->
-  <script defer src="./assets/js/app.js"></script>
+  <script src="./assets/js/app.js" defer></script>
 </body>
 </html>
