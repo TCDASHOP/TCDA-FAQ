@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ / GUIDE | Transcend Color Digital Apparel</title>
+  <meta name="description" content="Transcend Color Digital Apparel (TCDA) のFAQ / GUIDE。支払い、配送、関税、返品、サイズ、推定入力、商品画像についてまとめています。" />
+  <link rel="canonical" href="https://faq.tcda.shop/" />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="preload" href="./assets/css/style.css" as="style" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand" aria-label="Transcend Color Digital Apparel">
+        <a class="brandlink" href="https://www.tcda.shop/" aria-label="Go to TCDA Shop">
+          <img class="brandlogo" src="./LOGO.png" alt="Transcend Color Digital Apparel Logo"
+               onerror="this.style.display='none';document.getElementById('logoFallback').style.display='grid';" />
+          <span id="logoFallback" class="logoFallback" aria-hidden="true" style="display:none;">TCDA</span>
+          <span class="brandname">Transcend Color Digital Apparel</span>
+        </a>
+      </div>
+
+      <div class="lang" role="group" aria-label="Language switch">
+        <button type="button" id="btn-jp" aria-pressed="true">JP</button>
+        <button type="button" id="btn-en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <h1>FAQ / GUIDE</h1>
+    <p class="sub" id="tapHint"></p>
+
+    <!-- Notice -->
+    <section class="notice" aria-label="Important notice">
+      <div class="noticeTitle" id="noticeTitle"></div>
+      <div class="noticeBody" id="noticeBody"></div>
+    </section>
+
+    <!-- Search -->
+    <div class="searchbar" role="search" aria-label="FAQ search">
+      <div class="glass" aria-hidden="true">⌕</div>
+      <input id="faqSearch" type="search" inputmode="search" autocomplete="off" />
+      <button type="button" id="clearSearch"></button>
+    </div>
+
+    <div class="hintrow">
+      <div class="pill" id="hint1"></div>
+      <div class="pill" id="hint2"></div>
+    </div>
+
+    <div class="empty" id="emptyState"></div>
+
+    <!-- Render target -->
+    <div id="faqRoot" class="faqRoot" aria-label="FAQ list"></div>
+
+    <footer>© <span id="year"></span> Transcend Color Digital Apparel</footer>
+  </main>
+
+  <script src="./assets/js/app.js" defer></script>
+</body>
+</html>
